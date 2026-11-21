@@ -24,6 +24,17 @@ jobs:
             ];
             const marker = '[solar] upstream localization merged';
 
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'solar-migration',
+                color: 'D93F0B'
+              });
+            } catch (e) {
+              if (e.status !== 422) core.warning(`Could not create label: ${e.message}`);
+            }
+
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,

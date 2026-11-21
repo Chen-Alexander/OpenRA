@@ -71,6 +71,16 @@ jobs:
             const fs = require('fs');
             const files = fs.readFileSync('conflicts.txt', 'utf8').trim() || '(none)';
             const marker = 'solar: upstream sync conflict';
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'solar-sync',
+                color: 'FBCA04'
+              });
+            } catch (e) {
+              if (e.status !== 422) core.warning(`Could not create label: ${e.message}`);
+            }
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,

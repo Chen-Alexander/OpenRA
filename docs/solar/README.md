@@ -38,8 +38,16 @@ git config merge.conflictStyle zdiff3
 git push -u origin solar
 ```
 
-在 fork 的 **Settings → Actions → General** 里把 Workflow permissions 设为
-**Read and write permissions**，否则同步工作流无法建 PR/issue。
+在 fork 的 **Settings** 里还需要做两件事（否则自动同步不会按预期工作）：
+
+1. **General → Default branch** 改为 `solar`。
+   GitHub 的 `schedule` 和 `workflow_dispatch` 只在**默认分支**上读取工作流文件；
+   不改的话 `solar` 上的两个 workflow 不会自动运行。
+2. **Actions → General → Workflow permissions** 设为
+   **Read and write permissions**，否则工作流无法创建 PR/issue。
+
+> 上游除 `bleed` 外还有 `prep-2602`、`prep-2610` 这类发布准备分支；
+> 我们的自动同步只跟踪 `upstream/bleed`，不跟踪 `prep-*`。
 
 ## 3. 日常同步
 
