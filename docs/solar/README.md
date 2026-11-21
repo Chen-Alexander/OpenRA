@@ -1,5 +1,13 @@
 # solar 分支维护手册
 
+## 0. 当前状态（2026-11-21）
+
+- fork：<https://github.com/Chen-Alexander/OpenRA>，默认分支已设为 `solar`
+- `solar` 已推送，基于 `upstream/bleed` 的 `4cc9a9f`
+- 两个工作流均为 active；`Solar Sync` 首次手动运行成功
+  （当时上游无新提交，合并/构建/PR 步骤按设计跳过）
+- 推送触发的上游 `Continuous Integration` 也通过
+
 `solar` 是本地汉化长期分支：所有引擎补丁、语言包、字体和脚本都提交在这里；
 `bleed` 只做上游只读镜像，永远不在上面提交。
 
