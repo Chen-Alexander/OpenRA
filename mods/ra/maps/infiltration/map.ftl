@@ -1,2 +1,5 @@
 ## rules.yaml
-briefing = The Soviets are currently developing a new weapon system at a secret research laboratory. This is a reconnaissance mission. Do not engage until we know what we are up against and wait for reinforcements. Our civilian contacts reported a heavily guarded installation under ruthless command.
+briefing = 苏军目前正在一处秘密研究实验室开发新型武器系
+    统。这是一次侦察任务。在我们弄清对手底细之前
+    不要交战，并等待增援。我们的平民线人报告说，
+    那处设施戒备森严，由一名心狠手辣的指挥官掌管。

@@ -1,16 +1,15 @@
 ## rules.yaml
 briefing = 
-    LANDCOM 16 HQS.
-    TOP SECRET.
-    TO: FIELD COMMANDER A9
+    陆战司令部第16总部。
+    绝密。
+    致：战地指挥官 A9
     
-    INTELLIGENCE RECON SHOWS HEAVY
-    SOVIET MOVEMENT IN YOUR AREA.
-    NEARBY BRIDGES ARE KEY TO SOVIET
-    ADVANCEMENT. DESTROY ALL BRIDGES
-    ASAP. TANYA WILL ASSIST. KEEP HER
-    ALIVE AT ALL COSTS.
+    情报侦察显示，苏军正在你所在地区大规模调动。
+    附近的桥梁是苏军推进的关键。
+    尽快摧毁所有桥梁。
+    谭雅将协助你。
+    不惜一切代价保证她的安全。
     
-    CONFIRMATION CODE 1612.
+    确认代码 1612。
     
-    TRANSMISSION ENDS.
+    通讯结束。

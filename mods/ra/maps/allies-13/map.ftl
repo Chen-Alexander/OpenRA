@@ -1,10 +1,12 @@
 ## rules.yaml
 briefing = 
-    LANDCOM 16 HQS.
-    TOP SECRET.
-    TO: FIELD COMMANDER A9
+    陆战司令部第16总部。
+    绝密。
+    致：战地指挥官 A9
     
-    CONGRATULATIONS. CAPTURING TECH CENTERS HAS REVEALED AN UNDERGROUND WEAPONS FACILITY. PLACE EXPLOSIVE CHARGES ON ALL GENERATORS. RESULTING EXPOSIONS SHOULD DESTROY FACILITY.
-    GET OUT BEFORE NERVE GAS IS USED.
+    恭喜。夺取科技中心后，我们发现了
+    一处地下武器设施。在所有发电机上
+    安放炸药。随后的爆炸应能摧毁该设施。
+    在神经毒气被释放前撤离。
     
-    TRANSMISSION ENDS.
+    通讯结束。

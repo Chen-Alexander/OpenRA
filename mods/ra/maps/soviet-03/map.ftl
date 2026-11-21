@@ -1,5 +1,6 @@
 ## rules.yaml
 briefing = 
-    A spy who compromised the security of a northern sarin gas site has been traced back to Lund, Sweden, by Nadia's intelligence groups.
+    一名危及北部沙林毒气场安全的间谍，
+    已被娜迪亚的情报小组追踪到瑞典隆德。
     
-    He has been marked for death and a squad of Soviet troops has been dispatched to to hunt him down.
+    他已被判处死刑，一支苏军小队已被派去追捕他。

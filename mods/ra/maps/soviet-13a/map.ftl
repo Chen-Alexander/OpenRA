@@ -1,2 +1,4 @@
 ## rules.yaml
-briefing = We have another chance to capture the Chronosphere. Take out the Radar Domes to sever their link with the Chronosphere. Then capture it!
+briefing = 我们又有一次夺取超时空传送仪的机会。
+    摧毁雷达站，切断它们
+    与超时空传送仪的连接。然后夺取它！

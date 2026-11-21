@@ -1,7 +1,11 @@
 ## rules.yaml
 briefing = 
-    The Allies have infiltrated one of our nuclear reactors! They have tampered with the core so that a meltdown is imminent within 30 minutes. They must not succeed!
+    盟军潜入了我们的一座核反应堆！
+    他们对反应堆核心做了手脚，
+    30分钟内就会发生熔毁。绝不能让他们得逞！
     
-    Enter the base and find any remaining technicians. Guide them to the 4 coolant stations so they can activate them, then activate the main computer. The security systems have been armed so beware.
+    进入基地，找到幸存的技术人员。把他们带到4个
+    冷却站，让他们启动冷却站，然后启动主控计算机。
+    安保系统已进入戒备状态，务必小心。
     
-    Kill any Allies you find.
+    杀掉所有你发现的盟军。

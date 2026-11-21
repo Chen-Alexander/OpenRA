@@ -1,7 +1,8 @@
 ## rules.yaml
 briefing = 
-    Priority one is to establish a base and get your spy into one of the Soviet Tech Centers across the gulf.
-    Data on the Iron Curtain is in there and we need it.
+    首要任务是建立基地，
+    并让间谍潜入海湾对岸的一座苏军科技中心。
+    铁幕的资料就在那里，我们必须拿到手。
     
-    Once you get the data, complete your mission...
-    Wipe out everything.
+    拿到资料后，完成你的任务……
+    消灭一切。

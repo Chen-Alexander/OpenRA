@@ -1,7 +1,9 @@
 ## rules.yaml
 briefing = 
-    Soviet forces are advancing into rural Athens, threatening the civilian population. Evacuate civilians from each of the four towns to the island in the northeast. 
+    苏军正在向雅典郊区推进，威胁着平民的生命安全。
+    将四座城镇的平民全部撤离到东北方的岛上。
     
-    The civilians are hiding in the town churches, and will only come out once when you enter the town. Get in, get them out, and get them to the island.
+    平民们躲在城镇的教堂里，只有在你进入城镇时才会
+    出来一次。进去、带他们出来，再把他们送到岛上。
     
-    The civilians are your primary objective - removing the Soviet threat is optional.
+    平民是你的首要目标——清除苏军威胁只是可选项。

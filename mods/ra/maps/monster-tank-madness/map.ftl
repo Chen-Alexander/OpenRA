@@ -1,11 +1,16 @@
 ## rules.yaml
 briefing = 
-    Dr. Demitri, creator of a Soviet Super Tank, wants to defect.
+    苏联超级坦克的设计者德米特里博士想要叛逃。
     
-    We planned to extract him while the Soviets were testing their new weapon, but something has gone wrong.
+    我们原计划趁苏军测试
+    新武器时把他撤出，但出了岔子。
     
-    The Super Tanks are out of control, and Demitri is missing -- likely hiding in the village to the far south.
+    超级坦克失控了，德米特里
+    也失踪了——他很可能躲在最南边的村子里。
     
-    Find our outpost and start repairs on it, then find and evacuate Demitri.
+    找到我们的前哨站并着手修复，
+    然后找到德米特里并将他撤出。
     
-    As for the tanks, we can reprogram them. Send a spy into the Soviet radar dome in the NE, turning the tanks on their creators.
+    至于那些坦克，我们可以重新编程。
+    派一名间谍潜入东北方的苏军雷达站，
+    让坦克掉头对付它们的制造者。

@@ -1,5 +1,7 @@
 ## rules.yaml
 briefing = 
-    The last of the Soviet Siberian forces have ventured into the icy wastelands, where they have established a base. Destroy their stronghold so our Allied forces can advance unimpeded on their march to Moscow.
+    苏军在西伯利亚的残余部队逃入了冰原，
+    并在那里建立起基地。摧毁他们的据点，
+    好让我们的盟军部队向莫斯科进军时畅通无阻。
     
-    The mission is complete when all Soviet forces and structures are destroyed.
+    当所有苏军部队和建筑被摧毁时，任务即告完成。

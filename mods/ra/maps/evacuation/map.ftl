@@ -1,5 +1,9 @@
 ## rules.yaml
 briefing = 
-    One of our outposts is under heavy attack from a nearby Soviet base. Einstein, Tanya and many of our forces were evacuated by helicopter, but were shot down on the other side of the river. Fortunately they survived the crash, but are now stranded in enemy territory and must fight their way out. The air defenses must be eliminated before another Search & Rescue helicopter can arrive.
+    我们的一处前哨站正遭到附近苏军基地的猛烈进攻。
+    爱因斯坦、谭雅和许多部队已乘直升机撤离，
+    却在对岸被击落。所幸他们在坠机中幸存，
+    但如今被困在敌占区，必须杀出一条血路。在另一架
+    搜救直升机抵达之前，必须先清除敌方防空设施。
     
-    Meanwhile, those left at the base need to fend off Soviet attacks.
+    与此同时，留守基地的人必须抵挡苏军的进攻。

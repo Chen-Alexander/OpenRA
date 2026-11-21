@@ -1,9 +1,12 @@
 ## rules.yaml
 briefing = 
-    The Soviet Air Force is conducting air raids on a civilian village.
+    苏联空军正在对一个平民村庄进行空袭。
     
-    We must do everything in our power to stop them!
+    我们必须竭尽全力阻止他们！
     
-    Your job is to establish a base on the mainland ASAP. We can prevent the village's destruction by capturing the enemy's Air Force Headquarters. The enemy base is heavily guarded. You won't have time to build a force big enough to overpower the Soviet defenses. Find a way to sneak in!
+    你的任务是在大陆上尽快建立基地。只要夺取
+    敌方的空军指挥部，我们就能阻止村庄被毁。
+    敌方基地戒备森严。你不会有时间组建
+    足以压倒苏军防御的兵力。想办法潜进去！
     
-    Good luck, Commander!
+    祝你好运，指挥官！

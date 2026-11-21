@@ -1,9 +1,12 @@
 ## rules.yaml
 briefing = 
-    We've traced the convoy's route to an underground facility. We suspect that this is a hidden access point to the Soviets' main Sarin plant.
+    我们追踪车队的路线，发现了一处地下设施。
+    我们怀疑这里是通往苏军主要沙林工厂的隐蔽入口。
     
-    Lead your troops through the tunnels and remove any opposition you encounter. Be careful -- the Soviets are conducting all kinds of research here, and we don't know what they might use against you.
+    率领部队穿过隧道，清除遇到的一切抵抗。
+    小心——苏军在这里进行各种研究，
+    我们不知道他们会用什么来对付你。
     
-    Use spies to scout and infiltrate factories to steal vehicles.
+    派间谍侦察并潜入工厂，窃取车辆。
     
-    The mission is complete when your forces reach the far exit of the facility.
+    当你的部队抵达设施尽头的出口时，任务即告完成。

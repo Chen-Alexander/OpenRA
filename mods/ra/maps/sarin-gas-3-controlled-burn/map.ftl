@@ -1,7 +1,11 @@
 ## rules.yaml
 briefing = 
-    We have infiltrated the Soviets' Sarin facility. However, the main entrance is guarded by a wall of Tesla coils. We can't move a large force in until they are taken down.
+    我们已潜入苏军的沙林设施。
+    然而主入口有一排磁暴线圈把守。
+    在摧毁它们之前，我们无法投入大部队。
     
-    Infiltrate the power grid to the east or destroy the power plants. Once done, reinforcements will arrive.
+    潜入东边的电网，或者摧毁
+    发电厂。一旦得手，增援就会赶到。
     
-    Destroy the Soviet compound, but capture all of the Sarin processor buildings intact -- we can't risk a chemical spill.
+    摧毁苏军营地，但所有沙林加工厂必须
+    完好缴获——我们不能冒化学泄漏的风险。

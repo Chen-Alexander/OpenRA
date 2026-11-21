@@ -10,8 +10,9 @@ options-difficulty =
 
 ## rules.yaml
 briefing = 
-    Soviet forces are trying to retake the pass you cleared for our convoys.
+    苏军正试图夺回你为我们的车队打通的山口。
     
-    Don't let this happen. Hold the pass and prevent the Soviets from taking this vital area.
+    绝不能让他们得逞。
+    守住山口，阻止苏军夺取这一要地。
     
-    Destroy all Soviet units and buildings in this region.
+    摧毁本地区内所有苏军部队和建筑。

@@ -3,8 +3,12 @@ actor-ats-name = Advanced Tactical Submarine
 
 ## rules.yaml
 briefing = 
-    Information on our new Advanced Tactical Submarine was leaked to the Allies and they have invaded our territory, determined to stop us. You must destroy them.
+    我们新型高级战术潜艇的情报泄露给了盟军，他们
+    已入侵我国领土，妄图阻止我们。你必须消灭他们。
     
-    Regain control of our bases as they are revealed by the signal flares. Do not let any Allied attacks stop you.
+    随着信号弹标出各基地的位置，
+    逐一夺回控制权。不要让盟军的任何攻击阻碍你。
     
-    We have received word that a detachment of cruisers is on its way here. Once you recover the sub pen, use the new ATS to prevent the cruisers from destroying our operation.
+    我们收到消息，一支巡洋舰分队正在驶来。
+    夺回潜艇坞后，动用新型高级战术潜艇，
+    阻止巡洋舰摧毁我们的行动。

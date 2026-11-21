@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    A longtime thorn in our side, the Greek commander Stavros, has finally been cornered. He has taken refuge in an underground bunker full of his Chronosphere technology. Prove to him that no Allied tricks can stop the wrath of the Soviet Union. Track him down, and eliminate him.
+    长期让我们如鲠在喉的希腊指挥官斯塔夫罗斯
+    终于被逼入绝境。他躲进了一座装满超时空传送仪
+    技术的地下掩体。让他明白，任何盟军的
+    伎俩都挡不住苏联的怒火。找到他，干掉他。
     
-    Return with results -- we do not want to hear of his escape... only the creative manner of his demise.
+    带着结果回来——我们不想听到他逃跑的
+    消息……只想听到他如何死得别出心裁。
     
-    We have provided you with engineers that, given the opportunity, can use Chronosphere technology. Do not squander them.
+    我们为你配备了工程师，只要有机会，
+    他们就能使用超时空传送仪技术。不要浪费他们。

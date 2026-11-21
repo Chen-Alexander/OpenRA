@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    The Allies have stolen a new armor plating from us. With it, they can make structures nearly invulnerable. Their processing plant must be destroyed.
+    盟军从我们这里偷走了一种新型装甲板。
+    有了它，他们可以让建筑几乎
+    坚不可摧。必须摧毁他们的加工厂。
     
-    For this critical mission, we are allowing you access to Soldier Volkov. Use him and his cybernetic dog to sabotage the Allied control center, allowing our units in the southeast access to the alloy facility.
+    为完成这项关键任务，我们允许你调用士兵
+    沃尔科夫。用他和他的机械犬破坏盟军控制中心，
+    让我们在东南方的部队得以进入合金工厂。
     
-    The mission is a success when Volkov destroys the control center, and our units destroy the alloy facility.
+    当沃尔科夫摧毁控制中心、
+    我们的部队摧毁合金工厂时，任务即告成功。

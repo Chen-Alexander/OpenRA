@@ -1,7 +1,11 @@
 ## rules.yaml
 briefing = 
-    We've lost contact with one of our outposts. Before it went offline, we received a brief communique about giant ants. We're unsure what to make of this report, so we need you to investigate.  
+    我们与一处前哨站失去了联系。在它失联之前，
+    我们收到了一份关于巨蚁的简短通讯。我们
+    不确定该如何看待这份报告，所以需要你去调查。
     
-    Scout the area, bring the outpost back online, and report your findings. If there is a threat, reinforcements will be sent in to help you.  
+    侦察该地区，让前哨站恢复运作，并汇报你的发现。
+    如果存在威胁，我们会派出增援协助你。
     
-    Keep the base operational and maintain radio contact -- losing this outpost again is not an option.
+    保持基地正常运转并维持无线电联络——
+    再丢掉这处前哨站是绝对不能接受的。

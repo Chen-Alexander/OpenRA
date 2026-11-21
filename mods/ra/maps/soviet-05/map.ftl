@@ -1,7 +1,9 @@
 ## rules.yaml
 briefing = 
-    Khalkis island contains a large quantity of ore that we need.
+    哈尔基斯岛蕴藏着我们所需的大量矿石。
     
-    The Allies are well aware of our plans, and intend to establish their own base there. See to it that they fail.
+    盟军对我们的计划了如指掌，
+    并打算在那里建立自己的基地。务必让他们失败。
     
-    Additionally, capture their radar center so we can track Allied activity in the area.
+    此外，夺取他们的雷达站，
+    以便我们监控盟军在该地区的动向。

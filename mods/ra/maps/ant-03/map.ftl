@@ -1,7 +1,9 @@
 ## rules.yaml
 briefing = 
-    The source of the ants' activity has been pinpointed to this area, we suspect that their nests are here -- they must be destroyed!
+    巨蚁活动的源头已锁定在这一地区，
+    我们怀疑它们的巢穴就在这里——必须将其摧毁！
     
-    A team of civilian specialists is en-route to your location. Use them to gas all the ant nests and exterminate any ants that you encounter.
+    一支平民专家小队正在赶往你的位置。用他们
+    对所有蚁巢投放毒气，并消灭你遇到的所有巨蚁。
     
-    Be careful -- these creatures can chew through anything. Good luck.
+    小心——这些生物能咬穿任何东西。祝你好运。

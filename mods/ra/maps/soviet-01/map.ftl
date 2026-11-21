@@ -1,5 +1,7 @@
 ## rules.yaml
 briefing = 
-    A pitiful excuse for resistance has barricaded itself in this village.
+    一群可笑的抵抗者在这座村庄里设防固守。
     
-    Stalin has decided to make an example of them. Kill them all and destroy their homes. You will have Yak aircraft to use to teach these rebels a lesson.
+    斯大林决定拿他们杀一儆百。
+    把他们全部杀掉，摧毁他们的家园。
+    你将拥有雅克战机，用来给这些叛匪一个教训。

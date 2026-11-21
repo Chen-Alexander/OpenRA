@@ -1,7 +1,9 @@
 ## rules.yaml
 briefing = 
-    Soviet activity in Siberia is increasing. A large shipment of atomic material is on its way through this area, and we need it stopped. Destroy all of the Soviet convoy trucks and prevent the Soviets from furthering their atomic testing.
+    苏军在西伯利亚的活动日益频繁。一大批原子材料
+    正途经本地区，我们必须拦下它。摧毁所有
+    苏军车队卡车，阻止苏军继续推进其原子试验。
     
-    Be careful of the convoy truck cargo -- atomic material is highly unstable.
+    小心车队卡车上的货物——原子材料极不稳定。
     
-    The mission is complete when all the convoy trucks from each convoy have been destroyed.
+    当每支车队的卡车全部被摧毁时，任务即告完成。

@@ -1,5 +1,9 @@
 ## rules.yaml
 briefing = 
-    One of Stalin's top atomic strategists, Vladimir Kosygin, wishes to defect. His knowledge of Stalin's atomic strategies is invaluable to us. We will extract him from the Riga compound where he is stationed.
+    弗拉基米尔·科西金希望叛逃。
+    他是斯大林麾下最顶尖的原子战略家之一。
+    他掌握着斯大林原子战略方面的情报，对我们
+    极其宝贵。我们将从他就职的里加营地把他撤出。
     
-    Use a spy to infiltrate the Soviet command center and contact Kosygin. Once he is out of the building, guide him back to your base any way you can.
+    派间谍潜入苏军指挥中心并与科西金取得联系。
+    一旦他离开大楼，想尽一切办法把他带回你的基地。
