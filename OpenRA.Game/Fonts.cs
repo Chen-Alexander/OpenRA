@@ -26,13 +26,28 @@ namespace OpenRA
 		[FieldLoader.LoadUsing(nameof(LoadFonts))]
 		public readonly FrozenDictionary<string, FontData> FontList;
 
+		[FieldLoader.LoadUsing(nameof(LoadCjkFont))]
+		public readonly string CjkFont;
+
 		static object LoadFonts(MiniYaml y)
 		{
 			var ret = new Dictionary<string, FontData>(y.Nodes.Length);
 			foreach (var node in y.Nodes)
+			{
+				// CjkFont is metadata for languages that need a CJK-capable face,
+				// not a font style of its own.
+				if (node.Key == "CjkFont")
+					continue;
+
 				ret.Add(node.Key, FieldLoader.Load<FontData>(node.Value));
+			}
 
 			return ret.ToFrozenDictionary();
+		}
+
+		static object LoadCjkFont(MiniYaml y)
+		{
+			return y.NodeWithKeyOrDefault("CjkFont")?.Value.Value;
 		}
 	}
 }

@@ -132,8 +132,8 @@ namespace OpenRA
 			Notifications = YamlList(yaml, "Notifications");
 			Music = YamlList(yaml, "Music");
 			FluentMessages = YamlList(yaml, "FluentMessages");
-			if (yaml.TryGetValue("FluentLanguages", out entry))
-				FluentLanguages = entry.Nodes.Select(n => n.Key).ToImmutableArray();
+			if (yaml.TryGetValue("FluentLanguages", out var fluentLanguages))
+				FluentLanguages = fluentLanguages.Nodes.Select(n => n.Key).ToImmutableArray();
 			TileSets = YamlList(yaml, "TileSets");
 			ChromeMetrics = YamlList(yaml, "ChromeMetrics");
 			Missions = YamlList(yaml, "Missions");

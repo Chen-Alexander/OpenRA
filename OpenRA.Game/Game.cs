@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime;
 using System.Threading;
 using OpenRA.Graphics;
@@ -334,12 +335,15 @@ namespace OpenRA
 
 		public static RunStatus InitializeAndRun(string[] args)
 		{
+			launchArguments = args;
 			Initialize(new Arguments(args));
 
 			// Proactively collect memory during loading to reduce peak memory.
 			GC.Collect();
 			return Run();
 		}
+
+		static string[] launchArguments = [];
 
 		static void Initialize(Arguments args)
 		{
@@ -929,6 +933,53 @@ namespace OpenRA
 		public static void Exit()
 		{
 			state = RunStatus.Success;
+		}
+
+		/// <summary>
+		/// Starts a new instance of the game with the same arguments as the current process,
+		/// then exits. The new instance waits for this process to exit before initializing.
+		/// </summary>
+		public static bool TryRestartApplication()
+		{
+			try
+			{
+				var processPath = Environment.ProcessPath;
+				if (string.IsNullOrEmpty(processPath))
+					return false;
+
+				var startInfo = new ProcessStartInfo
+				{
+					FileName = processPath,
+					UseShellExecute = false,
+					WorkingDirectory = Environment.CurrentDirectory
+				};
+
+				// When the game was started with `dotnet bin/OpenRA.dll`, the entry assembly
+				// path is not part of the command line, so it must be added explicitly.
+				if (string.Equals(Path.GetFileNameWithoutExtension(processPath), "dotnet", StringComparison.OrdinalIgnoreCase))
+				{
+					var entryAssembly = Assembly.GetEntryAssembly()?.Location;
+					if (string.IsNullOrEmpty(entryAssembly))
+						return false;
+
+					startInfo.ArgumentList.Add(entryAssembly);
+				}
+
+				foreach (var argument in launchArguments)
+					startInfo.ArgumentList.Add(argument);
+
+				startInfo.ArgumentList.Add("--restart-wait");
+				startInfo.ArgumentList.Add(Environment.ProcessId.ToString(CultureInfo.InvariantCulture));
+
+				Process.Start(startInfo);
+				Exit();
+				return true;
+			}
+			catch (Exception e)
+			{
+				Log.Write("debug", $"Failed to restart the game: {e}");
+				return false;
+			}
 		}
 
 		public static void Disconnect()

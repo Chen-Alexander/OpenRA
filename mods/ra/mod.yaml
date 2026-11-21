@@ -184,6 +184,7 @@ AllowUnusedFluentMessagesInExternalPackages: false
 
 FluentLanguages:
 	en
+	zh-Hans
 
 Weapons:
 	ra|weapons/explosions.yaml
@@ -229,6 +230,7 @@ ChromeMetrics:
 	ra|metrics.yaml
 
 Fonts:
+	CjkFont: common|NotoSansCJKsc-Regular.otf
 	Tiny:
 		Font: common|FreeSans.ttf
 		Size: 10
@@ -317,3 +319,6 @@ GameSpeeds:
 
 DiscordService:
 	ApplicationId: 699222659766026240
+
+RendererConstants:
+	FontSheetSize: 1024

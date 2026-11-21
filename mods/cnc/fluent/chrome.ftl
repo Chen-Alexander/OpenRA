@@ -785,10 +785,29 @@ label-ui-scrollspeed-slider-container-scroll-speed = UI Scroll Speed:
 button-settings-panel-reset = Reset
 button-panel-gameplay = Gameplay
 button-panel-input = Input
+button-panel-language = Language
 button-panel-display = Display
 button-panel-audio = Audio
 button-panel-hotkeys = Hotkeys
 button-panel-advanced = Advanced
+
+## settings-language.yaml
+label-language-section-header = Language
+label-language-dropdown-container = Interface Language:
+label-restart-required-container-language-desc = Language changes require restart
+
+## Language restart prompt
+dialog-language-restart =
+    .title = Language Changed
+    .prompt = The new language will be applied the next time OpenRA starts. Restart now?
+
+dialog-language-restart-failed =
+    .title = Restart Failed
+    .prompt = OpenRA could not restart automatically. Please close the game and start it again manually.
+
+button-restart-now = Restart Now
+button-got-it = Got It
+button-ok = OK
 
 ## tooltips.yaml
 label-latency-tooltip-prefix = Latency:

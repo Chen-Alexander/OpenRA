@@ -11,29 +11,122 @@
 
 using System;
 using System.Collections.Generic;
+using OpenRA.Mods.Common.Widgets;
 using OpenRA.Widgets;
 
 namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class LanguageSettingsLogic : ChromeLogic
 	{
+		[FluentReference]
+		const string RestartTitle = "dialog-language-restart.title";
+
+		[FluentReference]
+		const string RestartPrompt = "dialog-language-restart.prompt";
+
+		[FluentReference]
+		const string RestartAccept = "button-restart-now";
+
+		[FluentReference]
+		const string RestartCancel = "button-got-it";
+
+		[FluentReference]
+		const string RestartFailedTitle = "dialog-language-restart-failed.title";
+
+		[FluentReference]
+		const string RestartFailedPrompt = "dialog-language-restart-failed.prompt";
+
+		[FluentReference]
+		const string Ok = "button-ok";
+
 		// Language names are in native script so users can find their language
 		// regardless of what the UI currently displays.
 		static readonly Dictionary<string, string> LanguageNativeNames = new()
 		{
 			{ "en", "English" },
+			{ "zh-Hans", "简体中文" },
 		};
 
+		readonly ModData modData;
 		readonly GameSettings gameSettings;
 		static string originalLanguage;
 
 		[ObjectCreator.UseCtor]
 		public LanguageSettingsLogic(ModData modData, SettingsLogic settingsLogic, string panelID, string label)
 		{
+			this.modData = modData;
 			gameSettings = modData.GetSettings<GameSettings>();
-			originalLanguage ??= gameSettings.Language;
+			EnsureOriginalLanguage();
 
 			settingsLogic.RegisterSettingsPanel(panelID, label, InitPanel, ResetPanel);
+		}
+
+		static void EnsureOriginalLanguage()
+		{
+			originalLanguage ??= Game.Settings.Game.Language;
+		}
+
+		public static string GetNativeName(string language)
+		{
+			return LanguageNativeNames.TryGetValue(language, out var name) ? name : language;
+		}
+
+		public static bool IsRestartRequired(GameSettings settings)
+		{
+			EnsureOriginalLanguage();
+			return settings.Language != originalLanguage;
+		}
+
+		public static void ShowDropdown(DropDownButtonWidget dropdown, GameSettings settings, ModData modData)
+		{
+			EnsureOriginalLanguage();
+
+			ScrollItemWidget SetupItem(string langCode, ScrollItemWidget itemTemplate)
+			{
+				var item = ScrollItemWidget.Setup(itemTemplate,
+					() => settings.Language == langCode,
+					() => SelectLanguage(langCode, settings, modData));
+
+				var displayName = GetNativeName(langCode);
+				item.Get<LabelWidget>("LABEL").GetText = () => displayName;
+				return item;
+			}
+
+			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, Game.ModData.Languages, SetupItem);
+		}
+
+		static void SelectLanguage(string langCode, GameSettings settings, ModData modData)
+		{
+			if (settings.Language == langCode)
+				return;
+
+			settings.Language = langCode;
+
+			// Choosing the language the game was started with does not need a restart.
+			if (!IsRestartRequired(settings))
+				return;
+
+			ConfirmationDialogs.ButtonPrompt(modData,
+				title: RestartTitle,
+				text: RestartPrompt,
+				confirmText: RestartAccept,
+				onConfirm: () => RestartNow(modData),
+				cancelText: RestartCancel,
+				onCancel: () => { });
+		}
+
+		static void RestartNow(ModData modData)
+		{
+			Game.Settings.Save();
+
+			if (Game.TryRestartApplication())
+				return;
+
+			ConfirmationDialogs.ButtonPrompt(modData,
+				title: RestartFailedTitle,
+				text: RestartFailedPrompt,
+				confirmText: Ok,
+				onConfirm: () => { });
 		}
 
 		Func<bool> InitPanel(Widget panel)
@@ -41,41 +134,20 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var scrollPanel = panel.Get<ScrollPanelWidget>("SETTINGS_SCROLLPANEL");
 
 			var languageDropdown = panel.Get<DropDownButtonWidget>("LANGUAGE_DROPDOWN");
-			languageDropdown.OnMouseDown = _ => ShowLanguageDropdown(languageDropdown, gameSettings);
-			languageDropdown.GetText = () =>
-			{
-				if (LanguageNativeNames.TryGetValue(gameSettings.Language, out var name))
-					return name;
-				return gameSettings.Language;
-			};
+			languageDropdown.OnMouseDown = _ => ShowDropdown(languageDropdown, gameSettings, modData);
+			languageDropdown.GetText = () => GetNativeName(gameSettings.Language);
 
 			var restartDesc = panel.Get("LANGUAGE_RESTART_REQUIRED_DESC");
-			restartDesc.IsVisible = () => gameSettings.Language != originalLanguage;
+			restartDesc.IsVisible = () => IsRestartRequired(gameSettings);
 
 			SettingsUtils.AdjustSettingsScrollPanelLayout(scrollPanel);
 
-			return () => gameSettings.Language != originalLanguage;
+			return () => IsRestartRequired(gameSettings);
 		}
 
 		Action ResetPanel(Widget panel)
 		{
 			return () => gameSettings.Language = new GameSettings().Language;
-		}
-
-		static void ShowLanguageDropdown(DropDownButtonWidget dropdown, GameSettings gameSettings)
-		{
-			ScrollItemWidget SetupItem(string langCode, ScrollItemWidget itemTemplate)
-			{
-				var item = ScrollItemWidget.Setup(itemTemplate,
-					() => gameSettings.Language == langCode,
-					() => gameSettings.Language = langCode);
-
-				var displayName = LanguageNativeNames.TryGetValue(langCode, out var name) ? name : langCode;
-				item.Get<LabelWidget>("LABEL").GetText = () => displayName;
-				return item;
-			}
-
-			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, Game.ModData.Languages, SetupItem);
 		}
 	}
 }

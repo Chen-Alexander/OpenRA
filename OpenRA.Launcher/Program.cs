@@ -1,4 +1,4 @@
-﻿#region Copyright & License Information
+#region Copyright & License Information
 /*
  * Copyright (c) The OpenRA Developers and Contributors
  * This file is part of OpenRA, which is free software. It is made
@@ -10,6 +10,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,6 +21,8 @@ namespace OpenRA.Launcher
 		[STAThread]
 		static int Main(string[] args)
 		{
+			args = WaitForRestartParent(args);
+
 			if (Debugger.IsAttached || args.Contains("--just-die"))
 			{
 				try
@@ -55,6 +58,31 @@ namespace OpenRA.Launcher
 				// Flushing logs in finally block is okay here, as the catch block handles the exception.
 				Log.Dispose();
 			}
+		}
+
+		static string[] WaitForRestartParent(string[] args)
+		{
+			var index = Array.IndexOf(args, "--restart-wait");
+			if (index < 0 || index + 1 >= args.Length || !int.TryParse(args[index + 1], out var pid))
+				return args;
+
+			try
+			{
+				using var process = Process.GetProcessById(pid);
+				process.WaitForExit(15000);
+			}
+			catch (ArgumentException)
+			{
+				// The previous process has already exited.
+			}
+			catch (InvalidOperationException)
+			{
+				// The previous process exited while waiting for it.
+			}
+
+			var remaining = new List<string>(args);
+			remaining.RemoveRange(index, 2);
+			return remaining.ToArray();
 		}
 	}
 }

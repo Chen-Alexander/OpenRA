@@ -135,10 +135,17 @@ namespace OpenRA
 			{
 				fontSheetBuilder?.Dispose();
 				fontSheetBuilder = new SheetBuilder(SheetType.BGRA, modData.Manifest.RendererConstants.FontSheetSize);
-				Fonts = modData.GetOrCreate<Fonts>().FontList.ToDictionary(x => x.Key,
-					x => new SpriteFont(
-						platform, x.Value.Font, modData.DefaultFileSystem.Open(x.Value.Font).ReadAllBytes(),
-						x.Value.Size, x.Value.Ascender, Window.EffectiveWindowScale, fontSheetBuilder));
+
+				var fontData = modData.GetOrCreate<Fonts>();
+				var cjkFont = UsesCjkScript(Game.Settings.Game.Language) ? fontData.CjkFont : null;
+				Fonts = fontData.FontList.ToDictionary(x => x.Key,
+					x =>
+					{
+						var fontFile = string.IsNullOrEmpty(cjkFont) ? x.Value.Font : cjkFont;
+						return new SpriteFont(
+							platform, fontFile, modData.DefaultFileSystem.Open(fontFile).ReadAllBytes(),
+							x.Value.Size, x.Value.Ascender, Window.EffectiveWindowScale, fontSheetBuilder);
+					});
 			}
 
 			Window.OnWindowScaleChanged += (oldNative, oldEffective, newNative, newEffective) =>
@@ -159,6 +166,13 @@ namespace OpenRA
 		public void SetDepthMargin(float depthMargin)
 		{
 			this.depthMargin = depthMargin;
+		}
+
+		static bool UsesCjkScript(string language)
+		{
+			return language.StartsWith("zh", StringComparison.OrdinalIgnoreCase)
+				|| language.StartsWith("ja", StringComparison.OrdinalIgnoreCase)
+				|| language.StartsWith("ko", StringComparison.OrdinalIgnoreCase);
 		}
 
 		void BeginFrame()
