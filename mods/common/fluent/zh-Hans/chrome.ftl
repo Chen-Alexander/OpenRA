@@ -63,6 +63,32 @@ button-skirmish-tabs-options-tab = 选项
 label-music-title = 音乐
 button-select-categories-buttons-all = 全部
 dropdownbutton-filters-any = 任意
+
+## Main menu news and forum account
+dropdownbutton-news-bg-button = 战场新闻
+label-profile-link-desc-a = 关联论坛账号后，其他玩家可以
+label-profile-link-desc-b = 识别你、加入私密服务器，
+label-profile-link-desc-c = 并显示徽章。
+button-profile-link = 关联 OpenRA 论坛账号
+
+## Music
+label-music-title = 音乐
+label-music-controls-length = 时长
+checkbox-music-controls-shuffle = 随机播放
+checkbox-music-controls-loop = 循环
+label-container-title = 曲目
+label-no-music-title = 未安装音乐
+label-no-music-desc-a = 可以通过“管理内容”菜单
+label-no-music-desc-b = 安装游戏音乐。
+
+## Game over / score screen
+label-mission-objectives = 任务：
+label-mission-objective = 任务：
+checkbox-stats-objective = 消灭所有敌人！
+label-stats-player = 玩家
+label-stats-faction = 阵营
+label-stats-score = 分数
+label-menu-buttons-title = 选项
 label-profile-section-header = 档案
 label-player-container = 玩家名称：
 label-playercolor-container-color = 偏好颜色：
