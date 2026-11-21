@@ -5,6 +5,10 @@ button-back = Back
 button-continue = Continue
 button-quit = Quit
 
+## Version and player defaults
+label-development-version = Development Build
+default-player-name = Commander
+
 ## Server Orders
 notification-custom-rules = This map contains custom rules. Game experience may change.
 notification-two-humans-required = This server requires at least two human players to start a match.

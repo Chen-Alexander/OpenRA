@@ -15,10 +15,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class VersionLabelLogic : ChromeLogic
 	{
+		[FluentReference]
+		const string DevelopmentVersion = "label-development-version";
+
 		[ObjectCreator.UseCtor]
 		public VersionLabelLogic(LabelWidget widget, ModData modData)
 		{
 			var versionText = modData.Manifest.Metadata.Version;
+			if (versionText == "{DEV_VERSION}")
+				versionText = FluentProvider.GetMessage(DevelopmentVersion);
+
 			widget.GetText = () => versionText;
 		}
 	}
