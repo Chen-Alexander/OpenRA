@@ -35,6 +35,9 @@ namespace OpenRA
 		[FluentReference("filename")]
 		const string SavedScreenshot = "notification-saved-screenshot";
 
+		[FluentReference]
+		const string SkirmishGameName = "label-skirmish-server-name";
+
 		public const int TimestepJankThreshold = 250; // Don't catch up for delays larger than 250ms
 
 		public static InstalledMods Mods { get; private set; }
@@ -1031,7 +1034,7 @@ namespace OpenRA
 		{
 			var settings = new ServerSettings()
 			{
-				Name = "Skirmish Game",
+				Name = FluentProvider.GetMessage(SkirmishGameName),
 				Map = map,
 				AdvertiseOnline = false,
 				AdvertiseOnLocalNetwork = !isSkirmish
