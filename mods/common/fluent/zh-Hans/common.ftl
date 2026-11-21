@@ -8,3 +8,9 @@ options-control-scheme =
     .classic = 经典
     .modern = 现代
     .otherrts = 其他 RTS
+
+options-camera =
+    .close = 近
+    .medium = 中
+    .far = 远
+    .furthest = 最远
