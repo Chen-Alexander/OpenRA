@@ -83,6 +83,48 @@ options-observer-stats =
 label-win-state-won = 胜利
 label-win-state-lost = 失败
 
+options-display-mode =
+    .windowed = 窗口化
+    .legacy-fullscreen = 全屏（旧式）
+    .fullscreen = 全屏
+
+label-video-display-index = 显示器 { $number }
+
+options-status-bars =
+    .standard = 标准
+    .show-on-damage = 受伤时显示
+    .always-show = 始终显示
+
+options-target-lines =
+    .automatic = 自动
+    .manual = 手动
+    .disabled = 已禁用
+
+checkbox-frame-limiter = 启用帧率限制（{ $fps } FPS）
+
+auto-save-interval =
+    .disabled = 已禁用
+    .options =
+        { $seconds ->
+            [one] { $seconds } 秒
+           *[other] { $seconds } 秒
+        }
+    .minute-options =
+        { $minutes ->
+            [one] { $minutes } 分钟
+           *[other] { $minutes } 分钟
+        }
+
+auto-save-max-file-number = { $saves } 个存档
+
+options-mouse-scroll-type =
+    .disabled = 已禁用
+    .standard = 标准
+    .inverted = 反转
+    .joystick = 摇杆
+
+hotkey-context-any = 任意
+
 ## Server orders
 options-control-scheme =
     .classic = 经典
