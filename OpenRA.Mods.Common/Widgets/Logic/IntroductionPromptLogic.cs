@@ -43,6 +43,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var playerSettings = modData.GetSettings<PlayerSettings>();
 			var graphicSettings = modData.GetSettings<GraphicSettings>();
 			var gameSettings = modData.GetSettings<GameSettings>();
+			var initialLanguage = gameSettings.Language;
+
+			var languageDropdown = widget.Get<DropDownButtonWidget>("LANGUAGE_DROPDOWN");
+			languageDropdown.OnMouseDown = _ => LanguageSettingsLogic.ShowDropdown(languageDropdown, gameSettings, modData, promptForRestart: false);
+			languageDropdown.GetText = () => LanguageSettingsLogic.GetNativeName(gameSettings.Language);
 
 			var controlTypes = new Dictionary<MouseControlStyle, string>
 			{
@@ -172,6 +177,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				gameSettings.IntroductionPromptVersion = IntroductionVersion;
 				Game.Settings.Save();
+
+				// Apply the selected language to the main menu and everything that follows
+				// without asking for a restart.
+				if (gameSettings.Language != initialLanguage)
+					Game.ReloadLocalization();
+
 				Ui.CloseWindow();
 				onComplete();
 			};

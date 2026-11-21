@@ -982,6 +982,20 @@ namespace OpenRA
 			}
 		}
 
+		/// <summary>
+		/// Reloads the Fluent bundles and fonts for the current language without restarting.
+		/// Widgets pick up the new strings on their next draw.
+		/// </summary>
+		public static void ReloadLocalization()
+		{
+			FluentProvider.Initialize(ModData.Manifest, ModData.DefaultFileSystem, Settings.Game.Language);
+			Renderer.InitializeFonts(ModData);
+
+			var metadata = ModData.Manifest.Metadata;
+			if (!string.IsNullOrEmpty(metadata.WindowTitleTranslated))
+				Renderer.Window.SetWindowTitle(metadata.WindowTitleTranslated);
+		}
+
 		public static void Disconnect()
 		{
 			OrderManager.World?.TraitDict.PrintReport();

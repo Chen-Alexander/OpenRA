@@ -25,10 +25,17 @@ namespace OpenRA
 		static FluentBundle modFluentBundle;
 		static FluentBundle mapFluentBundle;
 
+		/// <summary>
+		/// Incremented whenever the loaded language changes. Widgets that cache
+		/// translated strings include this value in their cache key.
+		/// </summary>
+		public static int Version { get; private set; }
+
 		public static void Initialize(Manifest manifest, IReadOnlyFileSystem fileSystem, string language = "en")
 		{
 			lock (SyncObject)
 			{
+				Version++;
 				var basePaths = manifest.FluentMessages;
 				var allPaths = BuildLanguagePaths(basePaths, fileSystem, language);
 				modFluentBundle = new FluentBundle(language, allPaths, fileSystem);

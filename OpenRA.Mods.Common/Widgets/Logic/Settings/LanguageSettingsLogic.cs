@@ -77,7 +77,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			return settings.Language != originalLanguage;
 		}
 
-		public static void ShowDropdown(DropDownButtonWidget dropdown, GameSettings settings, ModData modData)
+		public static void ShowDropdown(DropDownButtonWidget dropdown, GameSettings settings, ModData modData, bool promptForRestart = true)
 		{
 			EnsureOriginalLanguage();
 
@@ -85,7 +85,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var item = ScrollItemWidget.Setup(itemTemplate,
 					() => settings.Language == langCode,
-					() => SelectLanguage(langCode, settings, modData));
+					() => SelectLanguage(langCode, settings, modData, promptForRestart));
 
 				var displayName = GetNativeName(langCode);
 				item.Get<LabelWidget>("LABEL").GetText = () => displayName;
@@ -95,12 +95,15 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, Game.ModData.Languages, SetupItem);
 		}
 
-		static void SelectLanguage(string langCode, GameSettings settings, ModData modData)
+		static void SelectLanguage(string langCode, GameSettings settings, ModData modData, bool promptForRestart)
 		{
 			if (settings.Language == langCode)
 				return;
 
 			settings.Language = langCode;
+
+			if (!promptForRestart)
+				return;
 
 			// Choosing the language the game was started with does not need a restart.
 			if (!IsRestartRequired(settings))
