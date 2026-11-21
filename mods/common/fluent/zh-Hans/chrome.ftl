@@ -90,6 +90,20 @@ label-stats-faction = 阵营
 label-stats-score = 分数
 label-menu-buttons-title = 选项
 
+## Mission browser
+button-missionbrowser-panel-start-briefing-video = 观看简报
+button-missionbrowser-panel-stop-briefing-video = 停止简报
+button-missionbrowser-panel-start-info-video = 观看情报视频
+button-missionbrowser-panel-stop-info-video = 停止情报视频
+button-missionbrowser-panel-play = 开始
+button-missionbrowser-panel-mission-info = 任务信息
+button-missionbrowser-panel-mission-options = 选项
+dropdown-missionbrowser-difficulty =
+    .label = 难度
+    .description = 任务难度
+dropdown-missionbrowser-gamespeed = 速度：
+label-missionbrowser-normal-difficulty = 普通
+
 ## Settings panels
 label-display-section-header = 显示
 label-audio-section-header = 音频

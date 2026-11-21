@@ -1,11 +1,11 @@
 ## rules.yaml
 briefing = 
-    Rescue Einstein from the Headquarters inside the Soviet complex.
-    
-    Once found, evacuate him via helicopter from the signal flare's location.
-    
-    Einstein and Tanya must be kept alive at all costs.
-    
-    Beware the Soviet's Tesla Coils.
-    
-    Direct Tanya to destroy the westmost power plants to take them offline.
+    从苏联总部内救出爱因斯坦。
+
+    找到他后，用直升机从信号弹位置将他撤离。
+
+    必须不惜一切代价保住爱因斯坦和谭雅。
+
+    小心苏联的磁暴线圈。
+
+    指挥谭雅摧毁最西侧的电厂，使其断电。

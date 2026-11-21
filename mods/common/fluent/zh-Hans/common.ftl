@@ -125,6 +125,14 @@ options-mouse-scroll-type =
 
 hotkey-context-any = 任意
 
+options-game-speed =
+    .slowest = 最慢
+    .slower = 较慢
+    .normal = 普通
+    .fast = 快
+    .faster = 较快
+    .fastest = 最快
+
 ## Server orders
 options-control-scheme =
     .classic = 经典
