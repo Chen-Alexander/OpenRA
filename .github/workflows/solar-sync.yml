@@ -1,0 +1,130 @@
+name: Solar Sync
+
+on:
+  schedule:
+    # Every Monday 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: solar-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout solar
+        uses: actions/checkout@v4
+        with:
+          ref: solar
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Configure git
+        run: |
+          git config user.name "solar-bot"
+          git config user.email "solar-bot@users.noreply.github.com"
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/OpenRA/OpenRA.git || true
+          git fetch --no-tags upstream bleed
+
+      - name: Check whether an update is needed
+        id: check
+        shell: bash
+        run: |
+          if git merge-base --is-ancestor upstream/bleed solar; then
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Merge upstream/bleed
+        if: steps.check.outputs.update == 'true'
+        id: merge
+        shell: bash
+        run: |
+          git switch -c solar-sync
+          if git merge --no-ff upstream/bleed -m "Merge upstream/bleed into solar"; then
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+            git diff --name-only --diff-filter=U | tee conflicts.txt
+          fi
+
+      - name: Open conflict issue
+        if: steps.merge.outputs.conflict == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const files = fs.readFileSync('conflicts.txt', 'utf8').trim() || '(none)';
+            const marker = 'solar: upstream sync conflict';
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'solar-sync',
+              per_page: 100
+            });
+            if (issues.some(i => i.title.startsWith(marker))) {
+              core.info('Conflict issue already open.');
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `${marker} (${new Date().toISOString().slice(0, 10)})`,
+              labels: ['solar-sync'],
+              body: [
+                'Merging `upstream/bleed` into `solar` produced conflicts:',
+                '',
+                '```',
+                files,
+                '```',
+                '',
+                'Resolve locally with `tools/solar/sync.ps1`, then push `solar`.'
+              ].join('\n')
+            });
+
+      - name: Fail on conflict
+        if: steps.merge.outputs.conflict == 'true'
+        run: exit 1
+
+      - name: Build
+        if: steps.check.outputs.update == 'true' && steps.merge.outputs.conflict == 'false'
+        run: dotnet build -c Release --nologo -p:TargetPlatform=linux-x64
+
+      - name: Check translation keys
+        if: steps.check.outputs.update == 'true' && steps.merge.outputs.conflict == 'false'
+        continue-on-error: true
+        run: python3 tools/solar/check-fluent.py --lang zh-Hans
+
+      - name: Open sync pull request
+        if: steps.check.outputs.update == 'true' && steps.merge.outputs.conflict == 'false'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: solar-sync
+          base: solar
+          title: 'Sync upstream/bleed into solar'
+          commit-message: 'Merge upstream/bleed into solar'
+          body: |
+            Automated sync of `upstream/bleed` into `solar`.
+
+            - `dotnet build -c Release -p:TargetPlatform=linux-x64` passed.
+            - Translation key report is in the job log.
+
+            Review the merge (especially `FluentProvider`, `Manifest`, `Settings`,
+            `mod.yaml` changes) before merging.
+          delete-branch: true
