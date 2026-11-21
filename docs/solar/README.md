@@ -90,27 +90,30 @@ git tag solar-core        # 指向最后一个“核心补丁”提交
 
 ## 5. 上游合并语言基础设施之后
 
-当 #22517（或等价的语言选择基础设施）被上游合并时：
+**当前策略：等上游真正合并后再决定。** 不预设迁移方式，也不直接 merge 上述 PR 的 head 分支；
+只同步 `upstream/bleed`。`Upstream Localization Watch` 每天检查 #22517/#22531/#22629，
+一旦合并会自动开 issue（label `solar-migration`），届时在两个方案中选择：
 
-1. `git fetch upstream`
-2. 确认我们的核心提交哪些已被上游覆盖（`git range-diff upstream/bleed solar-core solar`）
-3. 丢弃核心补丁，只保留翻译数据：
+### 方案 A：迁移到上游实现（维护成本最低）
 
 ```bash
+git fetch upstream
+git range-diff upstream/bleed solar-core solar   # 先确认重叠范围
 git rebase --onto upstream/bleed solar-core solar
 ```
 
-`solar-core` 之后的提交（翻译、字体、弹窗）会重放到新的 `upstream/bleed` 上。
-4. 若上游的字段名/语言注册方式与我们的不同，按上游实现调整 `mod.yaml` 与
-   `FluentLanguages`，翻译 `.ftl` 本身不用动。
-5. 编译、启动、切换语言测试通过后推送 `solar`。
+`solar-core` 之后的提交（翻译、字体、弹窗）会重放到新的 `upstream/bleed` 上；
+按上游的字段名/语言注册方式调整 `mod.yaml` 与 `FluentLanguages`，`.ftl` 本身不用动。
+最后编译、启动、切换语言测试通过后推送 `solar`。
 
-`Upstream Localization Watch` 工作流每天检查 #22517/#22531/#22629 是否被合并，
-一旦合并会自动开 issue（label `solar-migration`），提醒执行上面的步骤。
+### 方案 B：保留 solar 自己的 core
 
-> 我们的策略是“只同步 `upstream/bleed`，不直接合并上述 PR 的 head 分支”。
-> 这样上游合并后，历史是干净的：我们只是把自己的数据 rebase 到上游实现上，
-> 不会产生重复的语言选择实现。
+不 rebase 掉核心提交，只把 `upstream/bleed` merge 进来并手动解决冲突。
+适用于上游实现与我们的需求差异较大（例如重启弹窗、字体策略）的情况；
+长期成本是每次上游改动 `FluentProvider`/`Manifest`/`Settings` 都要跟随适配。
+
+无论选哪个方案，翻译数据（`mods/*/fluent/zh-Hans/*.ftl`、字体、`mod.yaml` 语言行）
+都保留，不要动。
 
 ## 6. 发布
 
