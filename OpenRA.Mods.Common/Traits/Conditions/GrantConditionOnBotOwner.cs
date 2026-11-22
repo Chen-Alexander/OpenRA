@@ -42,7 +42,7 @@ namespace OpenRA.Mods.Common.Traits
 
 		void INotifyCreated.Created(Actor self)
 		{
-			if (self.Owner.IsBot && info.Bots.Contains(self.Owner.BotType))
+			if (ShouldGrant(self.Owner))
 				conditionToken = self.GrantCondition(info.Condition);
 		}
 
@@ -51,8 +51,14 @@ namespace OpenRA.Mods.Common.Traits
 			if (conditionToken != Actor.InvalidConditionToken)
 				conditionToken = self.RevokeCondition(conditionToken);
 
-			if (info.Bots.Contains(newOwner.BotType))
+			if (ShouldGrant(newOwner))
 				conditionToken = self.GrantCondition(info.Condition);
+		}
+
+		bool ShouldGrant(Player player)
+		{
+			var automationPlayer = Game.Settings.Debug.AutomationEnabled && player.ClientIndex == Game.LocalClientId;
+			return (player.IsBot || automationPlayer) && info.Bots.Contains(player.BotType ?? "normal");
 		}
 	}
 }

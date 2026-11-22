@@ -222,6 +222,13 @@ namespace OpenRA
 				else
 					logic.Activate(this);
 			}
+			else if (!IsBot && Game.IsHost && client != null && client.Index == Game.LocalClientId &&
+				Game.Settings.Debug.AutomationEnabled)
+			{
+				// Local automation mode: let the normal AI play this player's side.
+				var logic = PlayerActor.TraitsImplementing<IBot>().FirstOrDefault(b => b.Info.Type == "normal");
+				logic?.Activate(this);
+			}
 
 			unlockRenderPlayer = PlayerActor.TraitsImplementing<IUnlocksRenderPlayer>().ToArray();
 			notifyDisconnected = PlayerActor.TraitsImplementing<INotifyPlayerDisconnected>().ToArray();
