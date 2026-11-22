@@ -211,6 +211,12 @@ namespace OpenRA
 		[Desc("Enable hidden developer settings in the Advanced settings tab.")]
 		public bool DisplayDeveloperSettings = false;
 
+		[Desc("Allow a local automation client to control the game.")]
+		public bool AutomationEnabled = false;
+
+		[Desc("TCP port used by the local automation client.")]
+		public int AutomationPort = 9999;
+
 		[Desc("Display bot debug messages in the game chat.")]
 		public bool BotDebug = false;
 

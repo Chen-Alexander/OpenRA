@@ -606,6 +606,14 @@ checkbox-perftext-container = Show Performance Text
 checkbox-sendsysinfo-container = Send System Information
 label-sendsysinfo-checkbox-container-desc = Your Operating System, OpenGL and .NET runtime versions, and language settings will be sent along with an anonymous ID to help prioritize future development.
 checkbox-enable-discord-service-container = Enable Discord Rich Presence
+## AI automation
+label-ai-section-header = AI Automation
+checkbox-automation-enabled = Allow local automation control
+label-automation-status = Port: { $port }    Status: { $status }
+label-automation-status-disabled = Not listening
+label-automation-status-pending = Enabled (listening after restart)
+label-automation-desc = Listens on 127.0.0.1 only for local automation testing. It is not exposed to the local network. Changes require a game restart.
+
 label-debug-section-header = Developer
 label-debug-hidden-container-a = Additional developer-specific options can be enabled via the
 label-debug-hidden-container-b = Debug.DisplayDeveloperSettings setting or launch flag

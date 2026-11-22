@@ -198,6 +198,14 @@ checkbox-perftext-container = 显示性能文字
 checkbox-sendsysinfo-container = 发送系统信息
 label-sendsysinfo-checkbox-container-desc = 你的操作系统、OpenGL 和 .NET 运行时版本以及语言设置会连同匿名 ID 一起发送，以帮助确定开发优先级。
 checkbox-enable-discord-service-container = 启用 Discord Rich Presence
+## AI 智能
+label-ai-section-header = AI 智能
+checkbox-automation-enabled = 允许本地自动化控制
+label-automation-status = 端口：{ $port }    状态：{ $status }
+label-automation-status-disabled = 未启用
+label-automation-status-pending = 已启用（重启后监听）
+label-automation-desc = 仅监听 127.0.0.1，用于本机自动化测试。不会对局域网开放；更改后需重启游戏。
+
 label-debug-section-header = 开发者
 label-debug-hidden-container-a = 可通过 Debug.DisplayDeveloperSettings 设置
 label-debug-hidden-container-b = 或启动参数启用更多开发者选项
