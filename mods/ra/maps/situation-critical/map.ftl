@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    A radical faction of our forces has stolen a biological weapon, threatening to use it on Allied emplacements. Since the weapon is highly unstable, it could destroy us all if released. 
+    我们内部的一个激进派系盗走了一件生化武器，
+    威胁要在盟军阵地使用它。由于这件武器
+    极不稳定，一旦泄漏可能让我们全部毁灭。
     
-    The facility must be destroyed, but the weapon must be neutralized first. Destroy the island's defenses, then use Volkov to assist our scientist in reaching the bio-research center. If either are killed before the weapon is neutralized, the mission is a failure.
+    必须摧毁该设施，但首先要让武器失效。
+    摧毁岛上的防御，然后让沃尔科夫护送我们的
+    科学家抵达生化研究中心。如果在武器失效
+    之前他们中任何一人阵亡，任务即告失败。
     
-    Once the scientist completes his mission, destroy the base.
+    一旦科学家完成任务，摧毁基地。

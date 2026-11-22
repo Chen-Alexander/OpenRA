@@ -1,7 +1,10 @@
 ## rules.yaml
 briefing = 
-    The Soviets are constructing a new class of submarine capable of launching sea-to-ground missiles. We don't need to tell you the devastation these could cause.
+    苏军正在建造一种新型潜艇，能够发射对地导弹。
+    它们可能造成的破坏无需我们多言。
     
-    Take a small squad of troops and infiltrate their power grid. Once it's down, reinforcements will follow. Then, head north to destroy the sub pen and prevent further construction of these submarines.
+    带上一支小分队潜入他们的电网。
+    电网一旦瘫痪，增援就会随之而来。
+    然后北上摧毁潜艇坞，阻止这些潜艇继续建造。
     
-    If any are built, they must not escape!
+    如果已有潜艇建成，绝不能让它们逃走！

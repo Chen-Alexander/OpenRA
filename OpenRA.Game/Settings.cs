@@ -211,6 +211,12 @@ namespace OpenRA
 		[Desc("Enable hidden developer settings in the Advanced settings tab.")]
 		public bool DisplayDeveloperSettings = false;
 
+		[Desc("Allow a local automation client to control the game.")]
+		public bool AutomationEnabled = false;
+
+		[Desc("TCP port used by the local automation client.")]
+		public int AutomationPort = 9999;
+
 		[Desc("Display bot debug messages in the game chat.")]
 		public bool BotDebug = false;
 
@@ -360,6 +366,9 @@ namespace OpenRA
 		public bool EnableDiscordService = true;
 
 		public TextNotificationPoolFilters TextNotificationPoolFilters = TextNotificationPoolFilters.Feedback | TextNotificationPoolFilters.Transients;
+
+		[Desc("BCP 47 language tag for UI strings.")]
+		public string Language = "en";
 
 		public MouseButton ResolveActionButton(MouseActionType actionType)
 		{

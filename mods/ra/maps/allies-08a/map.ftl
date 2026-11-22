@@ -1,5 +1,8 @@
 ## rules.yaml
 briefing = 
-    Our latest technology, the Chronosphere, is housed in this research station. The timer represents the appointed time for the completion of a vital experiment. The Soviets have learned of this and are moving in. 
+    我们最新的科技成果——超时空传送仪，就安置
+    在这座研究站内。倒计时代表一项关键实验预定的
+    完成时刻。苏军已经得知此事，正在向这里开进。
     
-    Protect the Chronosphere and the Advanced-Tech research center. Make sure the base is fully powered at the appointed time. If not, all will be lost!
+    保护超时空传送仪和高级科技研究中心。确保
+    基地在约定时刻电力充足。否则，一切都将完蛋！

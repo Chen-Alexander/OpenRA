@@ -16,10 +16,24 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class AdvancedSettingsLogic : ChromeLogic
 	{
+		[FluentReference]
+		const string AutomationStatus = "label-automation-status";
+
+		[FluentReference]
+		const string AutomationDisabled = "label-automation-status-disabled";
+
+		[FluentReference]
+		const string AutomationPending = "label-automation-status-pending";
+
+		[FluentReference]
+		const string AutomationListening = "label-automation-status-listening";
+
 		readonly DebugSettings debugSettings;
 		readonly GameSettings gameSettings;
 		readonly ServerSettings serverSettings;
 		static ServerSettings originalServerSettings;
+		static bool originalAutomationEnabled;
+		static int originalAutomationPort;
 
 		[ObjectCreator.UseCtor]
 		public AdvancedSettingsLogic(ModData modData, SettingsLogic settingsLogic, string panelID, string label)
@@ -28,6 +42,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			gameSettings = modData.GetSettings<GameSettings>();
 			serverSettings = modData.GetSettings<ServerSettings>();
 			originalServerSettings ??= serverSettings.Clone();
+			originalAutomationEnabled = debugSettings.AutomationEnabled;
+			originalAutomationPort = debugSettings.AutomationPort;
 			settingsLogic.RegisterSettingsPanel(panelID, label, InitPanel, ResetPanel);
 		}
 
@@ -47,6 +63,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var ssi = panel.Get<CheckboxWidget>("SENDSYSINFO_CHECKBOX");
 			ssi.IsDisabled = () => !gameSettings.FetchNews;
 
+			// AI 智能
+			SettingsUtils.BindCheckboxPref(panel, "AUTOMATION_ENABLED", debugSettings, "AutomationEnabled");
+			var automationStatus = panel.Get<LabelWidget>("AUTOMATION_STATUS");
+			automationStatus.GetText = () => FluentProvider.GetMessage(AutomationStatus,
+				"port", debugSettings.AutomationPort,
+				"status", FluentProvider.GetMessage(AutomationServer.IsRunning ? AutomationListening
+					: debugSettings.AutomationEnabled ? AutomationPending : AutomationDisabled));
+
 			// Developer
 			SettingsUtils.BindCheckboxPref(panel, "BOTDEBUG_CHECKBOX", debugSettings, "BotDebug");
 			SettingsUtils.BindCheckboxPref(panel, "LUADEBUG_CHECKBOX", debugSettings, "LuaDebug");
@@ -65,7 +89,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			SettingsUtils.AdjustSettingsScrollPanelLayout(scrollPanel);
 
-			return () => serverSettings.DiscoverNatDevices != originalServerSettings.DiscoverNatDevices;
+			return () => serverSettings.DiscoverNatDevices != originalServerSettings.DiscoverNatDevices
+				|| debugSettings.AutomationEnabled != originalAutomationEnabled
+				|| debugSettings.AutomationPort != originalAutomationPort;
 		}
 
 		Action ResetPanel(Widget panel)
@@ -87,6 +113,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				debugSettings.CheckVersion = defaultDebugSettings.CheckVersion;
 				debugSettings.EnableDebugCommandsInReplays = defaultDebugSettings.EnableDebugCommandsInReplays;
 				debugSettings.EnableSimulationPerfLogging = defaultDebugSettings.EnableSimulationPerfLogging;
+				debugSettings.AutomationEnabled = defaultDebugSettings.AutomationEnabled;
+				debugSettings.AutomationPort = defaultDebugSettings.AutomationPort;
 				gameSettings.EnableDiscordService = defaultGameSettings.EnableDiscordService;
 			};
 		}

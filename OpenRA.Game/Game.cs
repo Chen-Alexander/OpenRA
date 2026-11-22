@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime;
 using System.Threading;
 using OpenRA.Graphics;
@@ -33,6 +34,9 @@ namespace OpenRA
 	{
 		[FluentReference("filename")]
 		const string SavedScreenshot = "notification-saved-screenshot";
+
+		[FluentReference]
+		const string SkirmishGameName = "label-skirmish-server-name";
 
 		public const int TimestepJankThreshold = 250; // Don't catch up for delays larger than 250ms
 
@@ -334,12 +338,15 @@ namespace OpenRA
 
 		public static RunStatus InitializeAndRun(string[] args)
 		{
+			launchArguments = args;
 			Initialize(new Arguments(args));
 
 			// Proactively collect memory during loading to reduce peak memory.
 			GC.Collect();
 			return Run();
 		}
+
+		static string[] launchArguments = [];
 
 		static void Initialize(Arguments args)
 		{
@@ -456,6 +463,8 @@ namespace OpenRA
 			}
 
 			InitializeMod(manifest, args);
+
+			AutomationServer.Start(Settings.Debug.AutomationEnabled, Settings.Debug.AutomationPort);
 		}
 
 		public static IPlatform CreatePlatform(string platformName)
@@ -750,7 +759,11 @@ namespace OpenRA
 				}
 
 				using (new PerfSample("render_flip"))
-					Renderer.EndFrame(new DefaultInputHandler(OrderManager.World));
+				{
+					var inputHandler = new DefaultInputHandler(OrderManager.World);
+					Renderer.EndFrame(inputHandler);
+					AutomationServer.ProcessInput(inputHandler);
+				}
 
 				if (takeScreenshot)
 				{
@@ -931,6 +944,67 @@ namespace OpenRA
 			state = RunStatus.Success;
 		}
 
+		/// <summary>
+		/// Starts a new instance of the game with the same arguments as the current process,
+		/// then exits. The new instance waits for this process to exit before initializing.
+		/// </summary>
+		public static bool TryRestartApplication()
+		{
+			try
+			{
+				var processPath = Environment.ProcessPath;
+				if (string.IsNullOrEmpty(processPath))
+					return false;
+
+				var startInfo = new ProcessStartInfo
+				{
+					FileName = processPath,
+					UseShellExecute = false,
+					WorkingDirectory = Environment.CurrentDirectory
+				};
+
+				// When the game was started with `dotnet bin/OpenRA.dll`, the entry assembly
+				// path is not part of the command line, so it must be added explicitly.
+				if (string.Equals(Path.GetFileNameWithoutExtension(processPath), "dotnet", StringComparison.OrdinalIgnoreCase))
+				{
+					var entryAssembly = Assembly.GetEntryAssembly()?.Location;
+					if (string.IsNullOrEmpty(entryAssembly))
+						return false;
+
+					startInfo.ArgumentList.Add(entryAssembly);
+				}
+
+				foreach (var argument in launchArguments)
+					startInfo.ArgumentList.Add(argument);
+
+				startInfo.ArgumentList.Add("--restart-wait");
+				startInfo.ArgumentList.Add(Environment.ProcessId.ToString(CultureInfo.InvariantCulture));
+
+				Process.Start(startInfo);
+				Exit();
+				return true;
+			}
+			catch (Exception e)
+			{
+				Log.Write("debug", $"Failed to restart the game: {e}");
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// Reloads the Fluent bundles and fonts for the current language without restarting.
+		/// Widgets pick up the new strings on their next draw.
+		/// </summary>
+		public static void ReloadLocalization()
+		{
+			FluentProvider.Initialize(ModData.Manifest, ModData.DefaultFileSystem, Settings.Game.Language);
+			Renderer.InitializeFonts(ModData);
+
+			var metadata = ModData.Manifest.Metadata;
+			if (!string.IsNullOrEmpty(metadata.WindowTitleTranslated))
+				Renderer.Window.SetWindowTitle(metadata.WindowTitleTranslated);
+		}
+
 		public static void Disconnect()
 		{
 			OrderManager.World?.TraitDict.PrintReport();
@@ -966,7 +1040,7 @@ namespace OpenRA
 		{
 			var settings = new ServerSettings()
 			{
-				Name = "Skirmish Game",
+				Name = FluentProvider.GetMessage(SkirmishGameName),
 				Map = map,
 				AdvertiseOnline = false,
 				AdvertiseOnLocalNetwork = !isSkirmish

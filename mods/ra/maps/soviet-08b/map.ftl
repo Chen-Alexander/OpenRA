@@ -1,7 +1,10 @@
 ## rules.yaml
 briefing = 
-    We have detected Allied activity on Elba island. The Allies plan to use this island to stage an attack on the Soviet Empire.
+    我们侦测到厄尔巴岛上有盟军活动。
+    盟军计划以该岛为跳板，向苏联发动进攻。
     
-    You must ensure that the island ceases to be under Allied control. Destroy all Allied units on and around the island.
+    你必须确保该岛不再处于盟军控制之下。
+    摧毁岛上及周边所有盟军部队。
     
-    The local population has been aiding the Allies as well. There is only one punishment for helping the enemy - Death.
+    当地居民也在协助盟军。
+    帮助敌人只有一个惩罚——死刑。

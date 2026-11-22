@@ -1,5 +1,8 @@
 ## rules.yaml
 briefing = 
-    You must defend a Soviet convoy that is moving through Allied occupied territory. Using the new MIG jet and a compliment of Yaks, get the convoy through the area intact.
+    你必须保护一支穿越盟军占领区的苏军车队。
+    动用新型米格战机以及一批雅克战机，
+    让车队完好无损地通过该地区。
     
-    Be careful -- your resources for this mission are very limited. If at least one truck makes it through to the other side, the mission will be a success.
+    小心——本次任务的资源非常有限。
+    只要至少有一辆卡车抵达对面，任务就算成功。

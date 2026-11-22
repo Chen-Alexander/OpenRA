@@ -1,5 +1,7 @@
 ## rules.yaml
 briefing = 
-    Tomorrow, the attack on Germany begins, but today, we must protect our facility from Allied attacks.
+    明天，对德国的进攻就将开始，但今天，
+    我们必须保护我们的设施免遭盟军袭击。
     
-    Keep the Command Center intact at all costs, and destroy any Allied fortifications you might find.
+    不惜一切代价保住指挥中心，
+    并摧毁你发现的任何盟军防御工事。

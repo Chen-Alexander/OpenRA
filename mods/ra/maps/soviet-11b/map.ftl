@@ -1,2 +1,4 @@
 ## rules.yaml
-briefing = Intelligence indicates that a large portion of the Allied Naval Fleet will stop for refueling at a base in this area. Destroy the fleet and the base. Beware the long range of their cruisers.
+briefing = 情报显示，盟军海军舰队的一大部分
+    将在此地区的一处基地停靠补给。
+    摧毁这支舰队和该基地。小心他们巡洋舰的射程。

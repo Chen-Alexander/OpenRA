@@ -141,6 +141,7 @@ ChromeLayout:
 	common|chrome/mainmenu-prompts.yaml
 	ts|chrome/mainmenu-prerelease-notification.yaml
 	common|chrome/settings.yaml
+	common|chrome/settings-language.yaml
 	common|chrome/settings-display.yaml
 	common|chrome/settings-gameplay.yaml
 	common|chrome/settings-audio.yaml
@@ -189,6 +190,10 @@ FluentMessages:
 
 AllowUnusedFluentMessagesInExternalPackages: false
 
+FluentLanguages:
+	en
+	zh-Hans
+
 Voices:
 	ts|audio/voices.yaml
 
@@ -225,6 +230,7 @@ ChromeMetrics:
 	ts|metrics.yaml
 
 Fonts:
+	CjkFont: common|NotoSansCJKsc-Regular.otf
 	Tiny:
 		Font: common|FreeSans.ttf
 		Size: 10
@@ -308,3 +314,6 @@ GameSpeeds:
 
 DiscordService:
 	ApplicationId: 712713986558394399
+
+RendererConstants:
+	FontSheetSize: 1024

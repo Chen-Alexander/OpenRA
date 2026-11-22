@@ -1,7 +1,10 @@
 ## rules.yaml
 briefing = 
-    With the fighting fast approaching Athens, Stavros insists on surveying the damage in his hometown in Greece.
+    随着战火迅速逼近雅典，斯塔夫罗斯
+    坚持要查看他希腊家乡所遭受的破坏。
     
-    You must escort Stavros through the town to a nearby friendly outpost. Once you reach it, evacuate him to safety.
+    你必须护送斯塔夫罗斯穿过城镇，
+    前往附近一处友军前哨站。抵达后，将他安全撤离。
     
-    If anything should happen, get Stavros to safety by any means necessary. He must be kept alive.
+    如果发生任何意外，不惜一切手段
+    把斯塔夫罗斯转移到安全地带。他必须活着。

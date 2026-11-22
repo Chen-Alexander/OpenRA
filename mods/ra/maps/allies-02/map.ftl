@@ -10,8 +10,10 @@ options-difficulty =
 
 ## rules.yaml
 briefing = 
-    A critical supply convoy is due through this area in 10 minutes, but Soviet forces have blocked the road in several places.
+    一支重要的补给车队将在10分钟后通过
+    本地区，但苏军已经在多处封锁了道路。
     
-    Unless you can clear them out, those supplies will never make it to the front.
+    除非你能清除这些路障，
+    否则这批补给永远无法送抵前线。
     
-    The convoy will come from the northwest, and time is short, so work quickly.
+    车队将从西北方向驶来，时间紧迫，务必抓紧行动。

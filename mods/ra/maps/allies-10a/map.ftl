@@ -1,2 +1,5 @@
 ## rules.yaml
-briefing = Kosygin has indicated that this is the site of Stalin's main atomic weapons plant. Use extreme care in approaching the Soviet base -- we don't know if any atomic bombs are armed. Take the facility offline and destroy any atomic weapons that exist.
+briefing = 科西金指出，这里就是斯大林主要原子武器
+    工厂的所在地。接近苏军基地时必须格外小心——
+    我们不知道是否有原子弹已经解除保险。
+    使该设施停止运转，并摧毁所有已存在的原子武器。

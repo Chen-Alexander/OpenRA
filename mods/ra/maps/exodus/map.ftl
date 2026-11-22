@@ -1,2 +1,5 @@
 ## rules.yaml
-briefing = We are being flanked from both sides. Evacuate before the remaining Allied forces in the area are wiped out. Einstein has recently developed a technology which allows us to obscure units from the enemy. Pull out at least one prototype mobile gap generator intact.
+briefing = 我们正遭到两面夹击。在该地区残余的盟军部队
+    被消灭之前撤离。爱因斯坦最近开发了一项技术，
+    可以让我们的部队躲过敌人耳目。
+    至少完整地带走一台机动裂缝产生器原型机。

@@ -73,3 +73,12 @@ button-mainmenu-prerelease-notification-continue = I Understand
 
 ## settings-hotkeys.yaml
 hotkey-group-depth-preview-debug = Depth Preview Debug
+
+## AI automation
+label-ai-section-header = AI Automation
+checkbox-automation-enabled = Allow local automation control
+label-automation-status = Port: { $port }    Status: { $status }
+label-automation-status-disabled = Not listening
+label-automation-status-pending = Enabled (listening after restart)
+label-automation-status-listening = Listening
+label-automation-desc = Listens on 127.0.0.1 only for local automation testing. It is not exposed to the local network. Changes require a game restart.

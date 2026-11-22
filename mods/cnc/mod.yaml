@@ -132,6 +132,7 @@ ChromeLayout:
 	cnc|chrome/ingame-debuginfo.yaml
 	cnc|chrome/music.yaml
 	cnc|chrome/settings.yaml
+	common|chrome/settings-language.yaml
 	cnc|chrome/settings-display.yaml
 	cnc|chrome/settings-gameplay.yaml
 	cnc|chrome/settings-audio.yaml
@@ -157,6 +158,10 @@ FluentMessages:
 	cnc|fluent/rules.ftl
 
 AllowUnusedFluentMessagesInExternalPackages: false
+
+FluentLanguages:
+	en
+	zh-Hans
 
 Voices:
 	cnc|audio/voices.yaml
@@ -194,6 +199,7 @@ ChromeMetrics:
 	cnc|metrics.yaml
 
 Fonts:
+	CjkFont: common|NotoSansCJKsc-Regular.otf
 	Tiny:
 		Font: common|FreeSans.ttf
 		Size: 10
@@ -282,3 +288,6 @@ GameSpeeds:
 
 DiscordService:
 	ApplicationId: 699223250181292033
+
+RendererConstants:
+	FontSheetSize: 1024

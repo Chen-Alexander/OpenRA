@@ -10,10 +10,13 @@ options-difficulty =
 
 ## rules.yaml
 briefing = 
-    Rescue Tanya.
+    救出谭雅。
     
-    Once disguised, your spy can move past any enemy unit, except dogs, without being detected. Direct him into the weapons factory located at a nearby Soviet base where he can hijack a truck and free Tanya.
+    伪装之后，你的间谍可以穿过任何敌方单位
+    （狗除外）而不被发现。指引他潜入附近苏军
+    基地的战车工厂，夺取一辆卡车并救出谭雅。
     
-    With Tanya's help, take out the air defenses on the island so a Chinook can arrive to rescue her.
+    在谭雅的协助下，摧毁岛上的防空设施，
+    好让支奴干直升机能够前来接走她。
     
-    Then destroy all remaining Soviet buildings and units.
+    然后摧毁所有残余的苏军建筑和部队。

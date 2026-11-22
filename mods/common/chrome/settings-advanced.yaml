@@ -107,6 +107,47 @@ Container@ADVANCED_PANEL:
 									WordWrap: True
 									Text: label-sendsysinfo-checkbox-container-desc
 				Container@SPACER:
+				Background@AI_SECTION_HEADER:
+					X: 5
+					Width: PARENT_WIDTH - 24 - 10
+					Height: 13
+					Background: separator
+					ClickThrough: True
+					Children:
+						Label@LABEL:
+							Width: PARENT_WIDTH
+							Height: PARENT_HEIGHT
+							Font: TinyBold
+							Align: Center
+							Text: label-ai-section-header
+				Container@ROW:
+					Width: PARENT_WIDTH - 24
+					Height: 90
+					Children:
+						Container@AUTOMATION_CONTAINER:
+							X: 10
+							Width: PARENT_WIDTH - 10
+							Children:
+								Checkbox@AUTOMATION_ENABLED:
+									Width: PARENT_WIDTH - 260
+									Height: 20
+									Font: Regular
+									Text: checkbox-automation-enabled
+								Label@AUTOMATION_STATUS:
+									X: PARENT_WIDTH - 260
+									Width: 250
+									Height: 20
+									Align: Right
+									Font: Tiny
+									Text: label-automation-status
+								Label@AUTOMATION_DESC:
+									Y: 30
+									Width: PARENT_WIDTH
+									Height: 45
+									Font: Tiny
+									WordWrap: True
+									Text: label-automation-desc
+				Container@SPACER:
 				Background@DEBUG_SECTION_HEADER:
 					X: 5
 					Width: PARENT_WIDTH - 24 - 10

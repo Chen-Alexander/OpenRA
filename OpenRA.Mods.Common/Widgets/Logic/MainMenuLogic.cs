@@ -406,12 +406,35 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			return null;
 		}
 
-		void DisplayNews(IEnumerable<NewsItem> newsItems)
+		void DisplayNews(IEnumerable<NewsItem> newsItems, bool translate = true)
 		{
+			var items = newsItems.ToArray();
+
+			if (translate && NewsTranslator.ShouldTranslate)
+			{
+				_ = Task.Run(async () =>
+				{
+					var translated = new List<NewsItem>();
+					foreach (var item in items)
+					{
+						translated.Add(new NewsItem
+						{
+							Title = await NewsTranslator.Translate(item.Title),
+							Author = item.Author,
+							DateTime = item.DateTime,
+							Content = await NewsTranslator.Translate(item.Content)
+						});
+					}
+
+					NewsTranslator.SaveCache();
+					Game.RunAfterTick(() => DisplayNews(translated, false));
+				});
+			}
+
 			newsPanel.RemoveChildren();
 			SetNewsStatus("");
 
-			foreach (var item in newsItems)
+			foreach (var item in items)
 			{
 				var newsItem = newsTemplate.Clone();
 

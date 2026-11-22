@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    A Soviet convoy of Sarin nerve gas has stopped at a riverside outpost for refuelling. This is a perfect opportunity to destroy the Sarin shipment, and remove the Soviet threat in the area.
+    一支运送沙林神经毒气的苏军车队
+    停在河边一处前哨站加油。这是销毁
+    这批沙林并消除该地区苏军威胁的绝佳机会。
     
-    Use your forces to destroy the convoy trucks and the base. It is imperative that none of the convoy trucks escape.
+    用你的部队摧毁车队卡车和基地。
+    绝不能让任何一辆车队卡车逃脱。
     
-    The Soviets keep their convoy information in their radar center. If a spy was to infiltrate the facility, it may help us locate the convoy escape routes.
+    苏军把车队的情报存放在他们的雷达站里。
+    如果派间谍潜入该设施，
+    或许能帮我们查明车队的逃跑路线。

@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    The situation is critical! The Soviets have taken over a small research base in the north. During the conflict, a chronosphere was badly damaged. We fear it could explode.
+    局势十分危急！苏军占领了北部一座小型
+    研究基地。在交火中，一台超时空传送仪
+    遭到严重损坏。我们担心它会爆炸。
     
-    Inside the base is a group of scientists that were captured during the takeover. They must be rescued before the chronosphere explodes. Fight your way back into the base and retrieve them.
+    基地内有一批在接管过程中被俘的科学家。
+    必须在超时空传送仪爆炸前
+    救出他们。杀回基地，把他们带回来。
     
-    Be careful -- there is only one way in and out of the base, a lone bridge. It must be protected to ensure evacuation.
+    小心——进出基地只有一条路，
+    一座孤桥。必须守住它，以确保撤离。

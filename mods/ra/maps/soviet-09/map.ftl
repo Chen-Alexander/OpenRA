@@ -1,5 +1,8 @@
 ## rules.yaml
 briefing = 
-    The Allied forces have intercepted and destroyed a convoy that carried parts for our secret weapon. One truck remains, but they have captured that last truck and its cargo.
+    盟军拦截并摧毁了一支运送我们秘密
+    武器部件的车队。只剩下一辆卡车，
+    但他们已经缴获了这最后一辆卡车及其货物。
     
-    This is not acceptable! You are to destroy that truck before the Allies leave the area with it.
+    这绝对不可接受！你必须在盟军
+    把它带离该地区之前摧毁那辆卡车。

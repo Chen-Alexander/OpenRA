@@ -37,12 +37,20 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			return Game.Settings.Game.IntroductionPromptVersion < IntroductionVersion;
 		}
 
+		[FluentReference]
+		const string DefaultPlayerName = "default-player-name";
+
 		[ObjectCreator.UseCtor]
 		public IntroductionPromptLogic(Widget widget, ModData modData, WorldRenderer worldRenderer, Action onComplete)
 		{
 			var playerSettings = modData.GetSettings<PlayerSettings>();
 			var graphicSettings = modData.GetSettings<GraphicSettings>();
 			var gameSettings = modData.GetSettings<GameSettings>();
+			var initialLanguage = gameSettings.Language;
+
+			var languageDropdown = widget.Get<DropDownButtonWidget>("LANGUAGE_DROPDOWN");
+			languageDropdown.OnMouseDown = _ => LanguageSettingsLogic.ShowDropdown(languageDropdown, gameSettings, modData, promptForRestart: false);
+			languageDropdown.GetText = () => LanguageSettingsLogic.GetNativeName(gameSettings.Language);
 
 			var controlTypes = new Dictionary<MouseControlStyle, string>
 			{
@@ -67,6 +75,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			nameTextfield.IsDisabled = () => worldRenderer.World.Type != WorldType.Shellmap;
 			nameTextfield.Text = Settings.SanitizedPlayerName(playerSettings.Name);
 
+			var localizedDefaultName = FluentProvider.GetMessage(DefaultPlayerName);
+			if (playerSettings.Name == new PlayerSettings().Name)
+				nameTextfield.Text = localizedDefaultName;
+
 			var itchIntegration = modData.GetOrCreate<ItchIntegration>();
 			itchIntegration.GetPlayerName(name => nameTextfield.Text = Settings.SanitizedPlayerName(name));
 
@@ -80,7 +92,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 				nameTextfield.Text = nameTextfield.Text.Trim();
 				if (nameTextfield.Text.Length == 0)
-					nameTextfield.Text = Settings.SanitizedPlayerName(playerSettings.Name);
+					nameTextfield.Text = localizedDefaultName;
 				else
 				{
 					nameTextfield.Text = Settings.SanitizedPlayerName(nameTextfield.Text);
@@ -170,8 +182,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			widget.Get<ButtonWidget>("CONTINUE_BUTTON").OnClick = () =>
 			{
+				if (!string.IsNullOrWhiteSpace(nameTextfield.Text))
+					playerSettings.Name = Settings.SanitizedPlayerName(nameTextfield.Text);
+
 				gameSettings.IntroductionPromptVersion = IntroductionVersion;
 				Game.Settings.Save();
+
+				// Apply the selected language to the main menu and everything that follows
+				// without asking for a restart.
+				if (gameSettings.Language != initialLanguage)
+					Game.ReloadLocalization();
+
 				Ui.CloseWindow();
 				onComplete();
 			};

@@ -606,6 +606,15 @@ checkbox-perftext-container = Show Performance Text
 checkbox-sendsysinfo-container = Send System Information
 label-sendsysinfo-checkbox-container-desc = Your Operating System, OpenGL and .NET runtime versions, and language settings will be sent along with an anonymous ID to help prioritize future development.
 checkbox-enable-discord-service-container = Enable Discord Rich Presence
+## AI automation
+label-ai-section-header = AI Automation
+checkbox-automation-enabled = Allow local automation control
+label-automation-status = Port: { $port }    Status: { $status }
+label-automation-status-disabled = Not listening
+label-automation-status-pending = Enabled (listening after restart)
+label-automation-status-listening = Listening
+label-automation-desc = Listens on 127.0.0.1 only for local automation testing. It is not exposed to the local network. Changes require a game restart.
+
 label-debug-section-header = Developer
 label-debug-hidden-container-a = Additional developer-specific options can be enabled via the
 label-debug-hidden-container-b = Debug.DisplayDeveloperSettings setting or launch flag
@@ -697,6 +706,24 @@ checkbox-frame-limit-gamespeed-container = Limit framerate to game tick rate
 label-gl-profile-dropdown-container = OpenGL Profile:
 label-restart-required-container-video-desc = Display and OpenGL changes require restart
 
+## settings-language.yaml
+label-language-section-header = Language
+label-language-dropdown-container = Interface Language:
+label-restart-required-container-language-desc = Language changes require restart
+
+## Language restart prompt
+dialog-language-restart =
+    .title = Language Changed
+    .prompt = The new language will be applied the next time OpenRA starts. Restart now?
+
+dialog-language-restart-failed =
+    .title = Restart Failed
+    .prompt = OpenRA could not restart automatically. Please close the game and start it again manually.
+
+button-restart-now = Restart Now
+button-got-it = Got It
+button-ok = OK
+
 ## settings-hotkeys.yaml
 hotkey-group-game-commands = Game Commands
 hotkey-group-viewport-commands = Viewport Commands
@@ -736,6 +763,7 @@ label-ui-scrollspeed-slider-container-scroll-speed = UI Scroll Speed:
 button-settings-panel-reset = Reset
 button-panel-gameplay = Gameplay
 button-panel-input = Input
+button-panel-language = Language
 button-panel-display = Display
 button-panel-audio = Audio
 button-panel-hotkeys = Hotkeys

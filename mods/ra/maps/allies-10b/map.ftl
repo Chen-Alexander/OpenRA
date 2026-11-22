@@ -1,5 +1,8 @@
 ## rules.yaml
 briefing = 
-    Now that the complex has been infiltrated, the launch control centers must be deactivated. Get your engineers to the control centers and deactivate them before the missiles reach their targets.
+    既然设施已被潜入，现在必须让发射控制中心
+    失效。在导弹抵达目标之前，
+    派工程师前往这些控制中心并将其关闭。
     
-    Enemy technicians can help in locating the control centers if they are kept alive.
+    如果能留下敌方技术人员的性命，
+    他们可以帮忙找到控制中心。

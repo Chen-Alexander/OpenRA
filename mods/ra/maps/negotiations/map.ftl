@@ -1,5 +1,9 @@
 ## rules.yaml
 briefing = 
-    A Soviet force has holed up in a small town, threatening to kill a hostage every few minutes until their demands are met. We do not negotiate with terrorists -- explain this to them.
+    一支苏军部队盘踞在一座小镇里，扬言若要求得
+    不到满足，就每隔几分钟杀害一名人质。
+    我们绝不与恐怖分子谈判——去让他们明白这一点。
     
-    Locate the hostages, free as many of them as you can, and get them safely to a nearby abandoned church. Once done, return to your drop-off point, signal for reinforcements, and finish off the Soviet forces.
+    找到人质，尽可能多地解救他们，并把他们安全送
+    到附近一座废弃教堂。完成后，返回你的空降点，
+    发出信号呼叫增援，然后消灭苏军部队。

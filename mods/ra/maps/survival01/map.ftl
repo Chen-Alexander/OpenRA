@@ -1,12 +1,12 @@
 ## rules.yaml
 briefing = 
-    LANDCOM 66 HQS.
-    TOP SECRET.
-    TO: FIELD COMMANDER A34
+    陆战司令部第66总部。
+    绝密。
+    致：战地指挥官 A34
     
-    SOVIETS HAVE LAUNCHED HEAVY ATTACKS ON OUR POSITION.
-     SURVIVE AND HOLD THE BASE UNTIL OUR FRENCH ALLIES ARRIVE.
+    苏军已对我军阵地发动猛烈进攻。
+    坚持住，守住基地，直到我们的法国盟军抵达。
     
-    CONFIRMATION CODE 5593.
+    确认代码 5593。
     
-    TRANSMISSION ENDS.
+    通讯结束。

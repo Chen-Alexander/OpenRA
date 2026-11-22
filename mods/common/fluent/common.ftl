@@ -5,6 +5,24 @@ button-back = Back
 button-continue = Continue
 button-quit = Quit
 
+## Version and player defaults
+label-development-version = Development Build
+default-player-name = Commander
+label-skirmish-server-name = Skirmish Game
+
+## System info prompt
+label-system-info-row = { $label }: { $value }
+label-system-info-id = Anonymous ID
+label-system-info-platform = OS Type
+label-system-info-os = OS Version
+label-system-info-architecture = Architecture
+label-system-info-runtime = .NET Runtime
+label-system-info-opengl = OpenGL Version
+label-system-info-window-size = Window Size
+label-system-info-window-scale = Window Scale
+label-system-info-ui-scale = UI Scale
+label-system-info-system-language = System Language
+
 ## Server Orders
 notification-custom-rules = This map contains custom rules. Game experience may change.
 notification-two-humans-required = This server requires at least two human players to start a match.

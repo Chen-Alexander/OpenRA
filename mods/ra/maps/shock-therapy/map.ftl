@@ -1,7 +1,12 @@
 ## rules.yaml
 briefing = 
-    A small border town has been voicing support for the Allied cause. These people are no longer Soviets, but enemies to our great empire. As enemies, they must be destroyed.
+    一座边境小镇近来公开支持盟军。
+    这些人已不再是苏联人，而是我们伟大
+    帝国的敌人。既然是敌人，就必须消灭。
     
-    Take Stalin's elite shock troopers and demonstrate the iron might of the Soviet army. No doubt, the rabble will seek help from the meagre Allied prescence in the area.
+    带上斯大林的精锐突击队，
+    展示苏联军队的钢铁威力。
+    那群乌合之众无疑会向该地区为数不多的盟军求援。
     
-    Whatever pathetic support they can muster, it will not be enough. Crush them -- let nothing stand in your way.
+    无论他们能拼凑出怎样可悲的支援，都不足为惧。
+    碾碎他们——不要让任何东西挡住你的去路。

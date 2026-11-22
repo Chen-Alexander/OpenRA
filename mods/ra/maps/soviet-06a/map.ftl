@@ -1,7 +1,10 @@
 ## rules.yaml
 briefing = 
-    There is a special cargo that needs to be transported to a nearby Soviet base in the northeast.
+    有一批特殊货物需要
+    运往东北方附近的一处苏军基地。
     
-    Make sure the trucks reach their destination intact. Along the way, there is a bridge which the Allies have likely destroyed.
+    确保卡车完好抵达目的地。
+    沿途有一座桥，很可能已被盟军炸毁。
     
-    Use the Naval options at your disposal. Our attack subs will make short work of any Allied boats you discover.
+    善用你可支配的海军力量。我们的
+    攻击潜艇能迅速解决你发现的任何盟军船只。

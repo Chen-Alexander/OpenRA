@@ -1,9 +1,9 @@
 ## rules.yaml
 briefing = 
-    The Allied base in this region is proving to be problematic.
+    本地区的盟军基地正成为一大麻烦。
     
-    Your mission is to take it out, so that we can move forces through this area.
+    你的任务是拔掉它，好让我们能调兵通过这一地区。
     
-    As long as they have communications they will be able to call upon heavy reinforcements.
+    只要他们的通讯还在，就能呼叫大量增援。
     
-    Destroy their communications, and the Allies should be easy to remove.
+    摧毁他们的通讯设施，盟军就不难清除了。

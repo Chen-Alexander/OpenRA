@@ -1,4 +1,4 @@
-Allied Campaign:
+盟军战役:
 	allies-01
 	allies-02
 	allies-03a
@@ -16,7 +16,7 @@ Allied Campaign:
 	allies-10a
 	allies-10b
 	allies-13
-Soviet Campaign:
+苏联战役:
 	soviet-01
 	soviet-02a
 	soviet-02b
@@ -35,7 +35,7 @@ Soviet Campaign:
 	soviet-11b
 	soviet-13a
 	soviet-13b
-Counterstrike Allied Missions:
+反戈一击盟军任务:
 	sarin-gas-1-crackdown
 	sarin-gas-2-down-under
 	sarin-gas-3-controlled-burn
@@ -43,26 +43,26 @@ Counterstrike Allied Missions:
 	fall-of-greece-2-evacuation
 	siberian-conflict-1-fresh-tracks
 	siberian-conflict-3-wasteland
-Counterstrike Soviet Missions:
+反戈一击苏联任务:
 	mousetrap
 	proving-grounds
 	soviet-soldier-volkov-n-chitzkoi
 	top-o-the-world
-Aftermath Allied Missions:
+余波盟军任务:
 	in-the-nick-of-time
 	production-disruption
 	monster-tank-madness
 	negotiations
-Aftermath Soviet Missions:
+余波苏联任务:
 	shock-therapy
 	situation-critical
-OpenRA Originals:
+OpenRA 原创:
 	evacuation
 	exodus
 	infiltration
 	intervention
 	survival01
 	survival02
-Ant Missions:
+蚂蚁任务:
 	ant-01
 	ant-03
