@@ -73,7 +73,7 @@ namespace OpenRA
 		public readonly string SpriteSequenceFormat;
 		public readonly string TerrainFormat;
 
-		public readonly ImmutableArray<string> FluentLanguages = ImmutableArray.Create("en");
+		public readonly ImmutableArray<string> FluentLanguages = ["en"];
 		public readonly bool AllowUnusedFluentMessagesInExternalPackages = true;
 
 		static readonly FrozenSet<string> ReservedModuleNames = new HashSet<string>

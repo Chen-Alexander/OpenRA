@@ -11,7 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using OpenRA.Mods.Common.Widgets;
 using OpenRA.Widgets;
 
 namespace OpenRA.Mods.Common.Widgets.Logic
@@ -112,10 +111,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			ConfirmationDialogs.ButtonPrompt(modData,
 				title: RestartTitle,
 				text: RestartPrompt,
-				confirmText: RestartAccept,
 				onConfirm: () => RestartNow(modData),
-				cancelText: RestartCancel,
-				onCancel: () => { });
+				confirmText: RestartAccept,
+				onCancel: () => { },
+				cancelText: RestartCancel);
 		}
 
 		static void RestartNow(ModData modData)
@@ -128,8 +127,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			ConfirmationDialogs.ButtonPrompt(modData,
 				title: RestartFailedTitle,
 				text: RestartFailedPrompt,
-				confirmText: Ok,
-				onConfirm: () => { });
+				onConfirm: () => { },
+				confirmText: Ok);
 		}
 
 		Func<bool> InitPanel(Widget panel)

@@ -16,13 +16,6 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class AdvancedSettingsLogic : ChromeLogic
 	{
-		readonly DebugSettings debugSettings;
-		readonly GameSettings gameSettings;
-		readonly ServerSettings serverSettings;
-		static ServerSettings originalServerSettings;
-		static bool originalAutomationEnabled;
-		static int originalAutomationPort;
-
 		[FluentReference]
 		const string AutomationStatus = "label-automation-status";
 
@@ -31,6 +24,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 		[FluentReference]
 		const string AutomationPending = "label-automation-status-pending";
+
+		[FluentReference]
+		const string AutomationListening = "label-automation-status-listening";
+
+		readonly DebugSettings debugSettings;
+		readonly GameSettings gameSettings;
+		readonly ServerSettings serverSettings;
+		static ServerSettings originalServerSettings;
+		static bool originalAutomationEnabled;
+		static int originalAutomationPort;
 
 		[ObjectCreator.UseCtor]
 		public AdvancedSettingsLogic(ModData modData, SettingsLogic settingsLogic, string panelID, string label)
@@ -65,7 +68,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var automationStatus = panel.Get<LabelWidget>("AUTOMATION_STATUS");
 			automationStatus.GetText = () => FluentProvider.GetMessage(AutomationStatus,
 				"port", debugSettings.AutomationPort,
-				"status", FluentProvider.GetMessage(debugSettings.AutomationEnabled ? AutomationPending : AutomationDisabled));
+				"status", FluentProvider.GetMessage(AutomationServer.IsRunning ? AutomationListening
+					: debugSettings.AutomationEnabled ? AutomationPending : AutomationDisabled));
 
 			// Developer
 			SettingsUtils.BindCheckboxPref(panel, "BOTDEBUG_CHECKBOX", debugSettings, "BotDebug");

@@ -204,6 +204,7 @@ checkbox-automation-enabled = 允许本地自动化控制
 label-automation-status = 端口：{ $port }    状态：{ $status }
 label-automation-status-disabled = 未启用
 label-automation-status-pending = 已启用（重启后监听）
+label-automation-status-listening = 监听中
 label-automation-desc = 仅监听 127.0.0.1，用于本机自动化测试。不会对局域网开放；更改后需重启游戏。
 
 label-debug-section-header = 开发者

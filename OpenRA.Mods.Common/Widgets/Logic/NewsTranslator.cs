@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenRA.Mods.Common.Widgets.Logic
@@ -31,7 +32,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 		static readonly HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(20) };
 		static readonly Dictionary<string, string> Cache = LoadCache();
-		static readonly object Sync = new();
+		static readonly Lock Sync = new();
 		static bool dirty;
 
 		public static bool ShouldTranslate => Game.Settings.Game.Language.StartsWith("zh", StringComparison.OrdinalIgnoreCase);

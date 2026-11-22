@@ -463,6 +463,8 @@ namespace OpenRA
 			}
 
 			InitializeMod(manifest, args);
+
+			AutomationServer.Start(Settings.Debug.AutomationEnabled, Settings.Debug.AutomationPort);
 		}
 
 		public static IPlatform CreatePlatform(string platformName)
