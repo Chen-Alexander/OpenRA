@@ -761,8 +761,8 @@ namespace OpenRA
 				using (new PerfSample("render_flip"))
 				{
 					var inputHandler = new DefaultInputHandler(OrderManager.World);
-					AutomationServer.ProcessInput(inputHandler);
 					Renderer.EndFrame(inputHandler);
+					AutomationServer.ProcessInput(inputHandler);
 				}
 
 				if (takeScreenshot)
