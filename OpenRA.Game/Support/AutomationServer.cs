@@ -10,6 +10,7 @@
 #endregion
 
 using System;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -21,9 +22,12 @@ namespace OpenRA
 	/// <summary>
 	/// Local-only TCP endpoint used by automation clients. It binds to 127.0.0.1 and is
 	/// disabled unless Debug.AutomationEnabled is set in the game settings.
+	/// Commands are queued and injected directly into the game input handler, bypassing
+	/// the SDL/Windows focus requirements that apply to synthetic OS input.
 	/// </summary>
 	public static class AutomationServer
 	{
+		static readonly ConcurrentQueue<Action<IInputHandler>> PendingInput = new();
 		static TcpListener listener;
 		static Thread acceptThread;
 		static volatile bool running;
@@ -52,6 +56,13 @@ namespace OpenRA
 				running = false;
 				Log.Write("debug", $"Failed to start automation server on 127.0.0.1:{port}: {e.Message}");
 			}
+		}
+
+		/// <summary>Drains injected commands on the game thread.</summary>
+		public static void ProcessInput(IInputHandler inputHandler)
+		{
+			while (PendingInput.TryDequeue(out var action))
+				action(inputHandler);
 		}
 
 		static void AcceptLoop()
@@ -87,22 +98,65 @@ namespace OpenRA
 					writer.WriteLine("OpenRA automation ready");
 					string line;
 					while ((line = reader.ReadLine()) != null)
-					{
-						var command = line.Trim();
-						if (command.Length == 0)
-							continue;
-
-						if (command == "ping")
-							writer.WriteLine("pong");
-						else if (command == "status")
-							writer.WriteLine($"listening 127.0.0.1:{Port}");
-						else
-							writer.WriteLine($"error unknown command: {command}");
-					}
+						writer.WriteLine(HandleCommand(line.Trim()));
 				}
 				catch (IOException)
 				{
 				}
+			}
+		}
+
+		static string HandleCommand(string command)
+		{
+			if (command.Length == 0)
+				return "error empty command";
+
+			var parts = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+			switch (parts[0].ToLowerInvariant())
+			{
+				case "ping":
+					return "pong";
+
+				case "status":
+					return $"listening 127.0.0.1:{Port}";
+
+				case "click":
+				case "move":
+				{
+					if (parts.Length != 3 || !int.TryParse(parts[1], out var x) || !int.TryParse(parts[2], out var y))
+						return "error usage: click <x> <y>";
+
+					var location = new int2(x, y);
+					if (parts[0].Equals("click", StringComparison.OrdinalIgnoreCase))
+					{
+						PendingInput.Enqueue(handler =>
+						{
+							handler.OnMouseInput(new MouseInput(MouseInputEvent.Move, MouseButton.None, location, int2.Zero, Modifiers.None, 0));
+							handler.OnMouseInput(new MouseInput(MouseInputEvent.Down, MouseButton.Left, location, int2.Zero, Modifiers.None, 0));
+							handler.OnMouseInput(new MouseInput(MouseInputEvent.Up, MouseButton.Left, location, int2.Zero, Modifiers.None, 0));
+						});
+					}
+					else
+						PendingInput.Enqueue(handler => handler.OnMouseInput(new MouseInput(MouseInputEvent.Move, MouseButton.None, location, int2.Zero, Modifiers.None, 0)));
+
+					return "ok";
+				}
+
+				case "key":
+				{
+					if (parts.Length != 2 || !Enum.TryParse<Keycode>(parts[1], true, out var key))
+						return "error usage: key <keycode>";
+
+					PendingInput.Enqueue(handler =>
+					{
+						handler.OnKeyInput(new KeyInput { Event = KeyInputEvent.Down, Key = key });
+						handler.OnKeyInput(new KeyInput { Event = KeyInputEvent.Up, Key = key });
+					});
+					return "ok";
+				}
+
+				default:
+					return $"error unknown command: {parts[0]}";
 			}
 		}
 	}
